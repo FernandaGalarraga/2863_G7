@@ -51,8 +51,9 @@
                     				<input type="text" class="input" name="nombre_usuario" autocomplete="off" placeholder="Usuario">
                     				<input type="password" class="input" name="password_usuario" autocomplete="off" placeholder="Contraseña">
                                     <input type="checkbox" class="checkbox" checked id="remember_me">
-                                    <a href="PaginaRegistrar.php">¿Aún no tienes cuenta? Regístrate</a><br><br>
                                     <input type="submit" class="button" value="Login">
+                                    <a href="PaginaRegistrar.php">¿Aún no tienes cuenta? Regístrate</a><br><br>
+                                   
                     			</form>
                     		</div>
                         </div>

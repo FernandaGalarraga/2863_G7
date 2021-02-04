@@ -25,8 +25,8 @@ session_start();
         }
         else
         {
-            echo "<script>alert('Usuario o Clave incorrecta')</script>";
-            header("Location: ../php/PaginaInicio.php");
+            echo '<script language="javascript">alert("Usuario o Clave Incorrecta");</script>';
+        echo "<a href='../php/PaginaInicio.php'>REGRESAR</a>";
             
         }
 		

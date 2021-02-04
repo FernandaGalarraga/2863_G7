@@ -61,7 +61,7 @@
                                 <input type="hidden" name="op" value="new">
                         
                                         
-                                    <input type="submit" class="button" name="Guardar" value="Registrarse">
+                                    <input type="submit" class="button" name="Guardar" value="Registrar">
                                 </form>
                         </div>
                 	</div>

@@ -49,7 +49,7 @@
                         <a href="../modelo/cerrarSesion.php"><img class="logoim" src="../img/salir.png" alt=""></a>
                     </div>
                     <div class="opciones">
-                        <input type="button" class="btnPerfil" value="REGISTRAR MEDICO"/><br>
+                        <a href="PaginaRegistrarMedico.php" class="btnPerfil">Registrar Medicos<a>
                         <input type="button" class="btnAgendar" value="VER MEDICOS"/><br>
                     </div>
                 </div>
