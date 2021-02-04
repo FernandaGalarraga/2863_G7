@@ -46,7 +46,7 @@
                 <!-- LOGIN FORM -->
                 <div class="user">
                     <div class="salir">
-                        <a href="#"><img class="logoim" src="../img/salir.png" alt=""></a>
+                        <a href="../modelo/cerrarSesion.php"><img class="logoim" src="../img/salir.png" alt=""></a>
                     </div>
                     <div class="opciones">
                         <button class="btnPerfil" onclick="window.location.href='ActualizarPerfilPaciente.php'">PERFIL</button>

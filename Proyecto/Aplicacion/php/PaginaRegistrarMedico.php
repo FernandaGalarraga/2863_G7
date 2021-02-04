@@ -35,9 +35,15 @@
                     </div>
                     <!-- SLIDESHOW -->
                     <div id="slideshow">
-                        <div class="one">
-                            <h2><span>CITAS MÉDICAS</span></h2>
-                            <p>Agenda tus citas médicas ahora.</p>
+                        <div class="three">
+                            <h2><span>CONSULTAS</span></h2>
+                            <ul>
+                                <li><span>Audiometría en cabina</span></li>
+                                <li><span>Espirometría</span></li>
+                                <li><span>Electrocardiograma</span></li>
+                                <li><span>Holter M.A.P.A</span></li>
+                                <li><span>Ergometría</span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -45,16 +51,18 @@
                 <div class="user">
                     <div class="form-wrap">
                     	 <div class="tabs-content">
-                            <div id="login-tab-content" class="active">
-                                <h2 class="bg-light">INICIAR SESIÓN</h2>
-                    			<form class="login-form" action="../modelo/validarUsuario.php" method="post">
-                    				<input type="text" class="input" name="nombre_usuario" autocomplete="off" placeholder="Usuario">
-                    				<input type="password" class="input" name="password_usuario" autocomplete="off" placeholder="Contraseña">
-                                    <input type="checkbox" class="checkbox" checked id="remember_me">
-                                    <a href="PaginaRegistrar.php">¿Aún no tienes cuenta? Regístrate</a><br><br>
-                                    <input type="submit" class="button" value="Login">
-                    			</form>
-                    		</div>
+                                <h2 class="bg-light">REGISTRAR MEDICO</h2>
+                                <form class="signup-form" action="../Controlador/controllerMedico.php" method="post">
+                                <input type="text" class="input" id="user_pass" name="nombreusuario" autocomplete="off" placeholder="Usuario">
+                                 <input type="password" class="input" id="user_passconfirm" name="passwordusuario" autocomplete="off" placeholder="Contraseña">
+                                 <input type="text" class="input" id="nombrepaciente" name="nombremedico" autocomplete="off" placeholder="Nombre">
+                                <input type="text" class="input" id="lastnamep" name="apellidomedico" autocomplete="off" placeholder="Apellido ">
+                                <input type="text" class="input" id="lastnamem" name="especialidad" autocomplete="off" placeholder="Especialidad">
+                                <input type="hidden" name="op" value="new">
+                        
+                                        
+                                    <input type="submit" class="button" name="Guardar" value="Registrarse">
+                                </form>
                         </div>
                 	</div>
                 </div>

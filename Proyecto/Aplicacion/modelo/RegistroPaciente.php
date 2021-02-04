@@ -22,11 +22,16 @@
     }
     if (!verificarUsuario($usuario)){
         $cn=conectar();
-        $sql="insert into paciente
-              values (NULL, '$nombreP', '$apellidoP','$apellidoM','$birthday','$telephone', '$gender')";
-        $res=$cn->query($sql);
         $sql="insert into usuario
-              values (NULL, '$usuario', '$pass', '$tipo')";
+              values (NULL, '$usuario', '$pass', '$tipo')";     
+        $res=$cn->query($sql);   
+        $sql2='SELECT * FROM `usuario` WHERE `NOMBREUSUARIO`="'.$usuario.'" ';
+        $resUser=$cn->query($sql2);
+        while($reg=$resUser->fetch_array()){
+             $codUsuario= $reg[0];
+        }
+        $sql="insert into paciente
+              values ('$codUsuario', '$nombreP', '$apellidoP','$apellidoM','$birthday','$telephone', '$gender')";
         $res=$cn->query($sql);
         echo '<script language="javascript">alert("Usuario registrado correctamente");</script>';
         echo "<a href='../php/PaginaInicio.php'>REGRESAR</a>";
