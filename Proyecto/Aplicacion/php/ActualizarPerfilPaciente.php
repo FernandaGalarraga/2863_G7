@@ -11,20 +11,14 @@
 require_once("../modelo/Conexion.php");
 $cn=conectar();
 session_start();
-$sql="SELECT * FROM paciente;";
-$res = $cn->query($sql) or die($cn->error);
-if($res->num_rows>0)
-{
-  while($row = $res->fetch_assoc()){
-$_SESSION["codigo"]=$row["CODIGOUSUARIO"];
-if(isset($_SESSION["codigo"])){
+//echo '<h2>'.$_SESSION["codigo"].'</h2>';
+
 $id=$_SESSION["codigo"];
-$cn=conectar();
 $sql2="select * from paciente where CODIGOUSUARIO='$id'";
 $res=$cn->query($sql2) or die($cn->error);
 $row=$res->fetch_assoc();
 $num=$res->num_rows;
-    if($num>0){
+if($num>0){
         $html='
             <div class="container register">
                     <div class="row">
@@ -88,9 +82,9 @@ $num=$res->num_rows;
             </div>';
         echo $html;
     }
-}
-  }
-}
+
+ // }
+
 ?>
 </body>
 </html>
