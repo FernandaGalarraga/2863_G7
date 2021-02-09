@@ -30,6 +30,9 @@ body {
     overflow:hidden;
     min-height: 100vh;
 }
+.btnRegister{
+    margin-bottom: 2%;
+}
 .register{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     margin-top: 6%;
@@ -80,11 +83,12 @@ body {
 }
 .register .register-form{
     padding: 10%;
-    margin-top: 10%;
+    margin-top: 6%;
+    text-align: center;
 }
 .btnRegister{
     float: right;
-    margin-top: 10%;
+    margin-top: 4%;
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
@@ -127,7 +131,7 @@ body {
     color: #495057;
 }
 .container{
-    margin-top: 11%;
+    margin-top: 8%;
 }
 .regresar{
     margin-bottom: 60%;
