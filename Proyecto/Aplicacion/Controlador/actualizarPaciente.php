@@ -4,16 +4,16 @@ $codigo=$_POST["CODIGOUSUARIO"];
 $nombre=$_POST["NOMBREPACIENTE"];
 $apellidoP=$_POST["APELLIDOPATERNO"];
 $apellidoM=$_POST["APELLIDOMATERNO"];
-$fecha=$_POST["FECHANACIMIENTO"];
+$fecha=$_POST["FECHANACIMIENTOPACIENTE"];
 $telefono=$_POST["TELEFONOPACIENTE"];
 $genero=$_POST["GENEROPACIENTE"];
 
     $con=conectar();
     $sql = "update paciente set NOMBREPACIENTE='$nombre',
                              APELLIDOPATERNO='$apellidoP',
-                             APELLIDOMATERNO='$apelliedoM',
+                             APELLIDOMATERNO='$apellidoM',
                              FECHANACIMIENTOPACIENTE='$fecha',
-                             TELEFONOPACIENTE='$telefono'
+                             TELEFONOPACIENTE='$telefono',
                              GENEROPACIENTE='$genero'
                        WHERE CODIGOUSUARIO='$codigo'";
 

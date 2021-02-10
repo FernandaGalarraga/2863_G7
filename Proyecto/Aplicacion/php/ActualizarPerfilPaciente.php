@@ -33,40 +33,43 @@ if($num>0){
                                     <h3 class="register-heading">Perfil</h3><br>
                                     <div class="register-form">
                                         <form action="../Controlador/actualizarPaciente.php" method="post">
-                                                <div class="form-group row">
+                                                    </tr>
+                                                    <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$id.'" required>
+                                                    <tr>
+                                                    <div class="form-group row">
                                                     <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
                                                     <div class="col-sm-10">
-                                                    <input type="text" class="form-control" value="'.$row['NOMBREPACIENTE'].'" required/>
+                                                    <input type="text" class="form-control" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" required/>
                                                     </div>
                                                 </div><br>
                                                 <div class="form-group row">
                                                     <label for="staticEmail" class="col-sm-2 col-form-label">Apellido Paterno</label>
                                                     <div class="col-sm-10">
-                                                    <input type="text" class="form-control" value="'.$row['APELLIDOPATERNO'].'" required/>
+                                                    <input type="text" class="form-control" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" required/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="staticEmail" class="col-sm-2 col-form-label">Apellido Materno</label>
                                                     <div class="col-sm-10">
-                                                    <input type="text" class="form-control" value="'.$row['APELLIDOMATERNO'].'" required/>
+                                                    <input type="text" class="form-control" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" required/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Nacimiento</label>
                                                     <div class="col-sm-10">
-                                                    <input type="date" class="form-control" value="'.$row['FECHANACIMIENTOPACIENTE'].'" required/>
+                                                    <input type="date" class="form-control" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" required/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="staticEmail" class="col-sm-2 col-form-label">Teléfono</label>
                                                     <div class="col-sm-10">
-                                                    <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" required/>
+                                                    <input type="text" minlength="10" maxlength="10" name="TELEFONOPACIENTE" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" required/>
                                                     </div>
                                                 </div><br>
                                                 <div class="form-group row">
                                                     <label for="staticEmail" class="col-sm-2 col-form-label">Género</label>
                                                     <div class="col-sm-10">
-                                                    <select class="form-control" name="genero">
+                                                    <select class="form-control" name="GENEROPACIENTE">
                                                     <option value="femenino">Femenino</option>
                                                     <option value="masculino">Masculino</option>
                                                     </select>
