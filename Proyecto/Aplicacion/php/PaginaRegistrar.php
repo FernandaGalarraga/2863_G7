@@ -36,6 +36,7 @@
                     <!-- SLIDESHOW -->
                     <div id="slideshow">
                         <div class="three">
+                        
                             <h2><span>CONSULTAS</span></h2>
                             <ul>
                                 <li><span>Audiometría en cabina</span></li>
@@ -44,28 +45,34 @@
                                 <li><span>Holter M.A.P.A</span></li>
                                 <li><span>Ergometría</span></li>
                             </ul>
+                            
                         </div>
                     </div>
                 </div>
                 <!-- LOGIN FORM -->
                 <div class="user">
                     <div class="form-wrap">
+                    <a href="PaginaInicio.php"><input type="image" class="regresar" src="../img/salir.png"></a>
                     	 <div class="tabs-content">
                                 <h2 class="bg-light">REGISTRARSE</h2>
                                 <form class="signup-form" action="../modelo/RegistroPaciente.php" method="post">
-                                    <input type="text" class="input" id="nombrepaciente" name="nombrepaciente" autocomplete="off" placeholder="Nombre">
-                                    <input type="text" class="input" id="lastnamep" name="apellidopaterno" autocomplete="off" placeholder="Apellido Paterno">
-                                    <input type="text" class="input" id="lastnamem" name="apellidomaterno" autocomplete="off" placeholder="Apellido Materno">
+                                    <input type="text" class="input" id="user_pass" name="nombreusuario" autocomplete="off" placeholder="Usuario" required>
+                                    <input type="password" class="input" id="user_passconfirm" name="passwordusuario" autocomplete="off" placeholder="Contraseña" required>
+                                    <input type="text" class="input" id="nombrepaciente" name="nombrepaciente" autocomplete="off" placeholder="Nombre" required>
+                                    <input type="text" class="input" id="lastnamep" name="apellidopaterno" autocomplete="off" placeholder="Apellido Paterno" required>
+                                    <input type="text" class="input" id="lastnamem" name="apellidomaterno" autocomplete="off" placeholder="Apellido Materno" required>
                                     <h>Fecha de nacimiento</h>
                                     <input type="date" class="input" id="birthday" name="fechanacimientopaciente" autocomplete="off">
-                                    <input type="text" class="input" id="telephone" name="telefonopaciente" autocomplete="off" placeholder="Teléfono">
+                                    <input type="text" class="input" id="telephone" name="telefonopaciente" autocomplete="off" placeholder="Teléfono" required>
                                     <h>Género</h> &nbsp; &nbsp;
                                     <select class="gender" name="generopaciente">
                                         <option value="femenino">Femenino</option>
                                         <option value="masculino">Masculino</option>
                                     </select><br>
-                                        <input type="text" class="input" id="user_pass" name="nombreusuario" autocomplete="off" placeholder="Usuario">
-                                        <input type="password" class="input" id="user_passconfirm" name="passwordusuario" autocomplete="off" placeholder="Contraseña">
+                                    <h3>Dirección:</h3>
+                                    <input type="text" class="input" id="ciudad" name="ciudaddireccion" autocomplete="off" placeholder="Ciudad" required>
+                                    <input type="text" class="input" id="calle" name="calledireccion" autocomplete="off" placeholder="Calle" required>
+                                    <input type="text" class="input" id="numero" name="numerodireccion" autocomplete="off" placeholder="Número" required>
                                     <input type="submit" class="button" value="Registrarse">
                                 </form>
                         </div>

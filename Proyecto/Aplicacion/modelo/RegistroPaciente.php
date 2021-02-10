@@ -9,6 +9,9 @@
     $usuario=$_POST['nombreusuario'];
     $pass=$_POST['passwordusuario'];
     $tipo="Paciente";
+    $ciudad=$_POST['ciudaddireccion'];
+    $calle=$_POST['calledireccion'];
+    $numero=$_POST['numerodireccion'];
 
     function verificarUsuario($usuario){
         $cn=conectar();
@@ -33,6 +36,9 @@
         $sql="insert into paciente
               values ('$codUsuario', '$nombreP', '$apellidoP','$apellidoM','$birthday','$telephone', '$gender')";
         $res=$cn->query($sql);
+        $sql2="insert into direccion
+              values (NULL, '$codUsuario', '$ciudad', '$calle','$numero')";
+        $res=$cn->query($sql2);
         echo '<script language="javascript">alert("Usuario registrado correctamente");</script>';
         echo "<a href='../php/PaginaInicio.php'>REGRESAR</a>";
     }else{

@@ -11,10 +11,10 @@
 require_once("../modelo/Conexion.php");
 $cn=conectar();
 session_start();
-//echo '<h2>'.$_SESSION["codigo"].'</h2>';
-
 $id=$_SESSION["codigo"];
-$sql2="select * from paciente where CODIGOUSUARIO='$id'";
+$sql2="select p.NOMBREPACIENTE, p.APELLIDOPATERNO, p.APELLIDOMATERNO, p.FECHANACIMIENTOPACIENTE, p.TELEFONOPACIENTE, p.GENEROPACIENTE,
+       d.CIUDADDIRECCION, d.CALLEDIRECCION, d.NUMERODIRECCION
+       from paciente p,direccion d where p.CODIGOUSUARIO='$id'";
 $res=$cn->query($sql2) or die($cn->error);
 $row=$res->fetch_assoc();
 $num=$res->num_rows;
@@ -36,45 +36,57 @@ if($num>0){
                                                     </tr>
                                                     <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$id.'" required>
                                                     <tr>
-                                                    <div class="form-group row">
-                                                    <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
-                                                    <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" required/>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Nombre</label>
+                                                            <input type="text" class="form-control" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" required/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Apellido Paterno</label>
+                                                            <input type="text" class="form-control" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" required/>
+                                                        </div>
                                                     </div>
-                                                </div><br>
-                                                <div class="form-group row">
-                                                    <label for="staticEmail" class="col-sm-2 col-form-label">Apellido Paterno</label>
-                                                    <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" required/>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Apellido Materno</label>
+                                                            <input type="text" class="form-control" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" required/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Fecha de Nacimiento</label>
+                                                            <input type="date" class="form-control" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" required/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="staticEmail" class="col-sm-2 col-form-label">Apellido Materno</label>
-                                                    <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" required/>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Teléfono</label>
+                                                            <input type="text" minlength="10" maxlength="10" name="TELEFONOPACIENTE" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" required/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Género</label>
+                                                            <select class="form-control" name="GENEROPACIENTE">
+                                                            <option value="femenino">Femenino</option>
+                                                            <option value="masculino">Masculino</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="staticEmail" class="col-sm-2 col-form-label">Fecha Nacimiento</label>
-                                                    <div class="col-sm-10">
-                                                    <input type="date" class="form-control" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" required/>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Ciudad</label>
+                                                            <input type="text" class="form-control" name="CIUDADDIRECCION" value="'.$row['CIUDADDIRECCION'].'" required/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Calle</label>
+                                                            <input type="text" class="form-control" name="CALLEDIRECCION" value="'.$row['CALLEDIRECCION'].'" required/>
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="staticEmail" class="col-sm-2 col-form-label">Teléfono</label>
-                                                    <div class="col-sm-10">
-                                                    <input type="text" minlength="10" maxlength="10" name="TELEFONOPACIENTE" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" required/>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12">
+                                                            <label for="staticEmail">Número</label>
+                                                            <input type="text" class="form-control" name="NUMERODIRECCION" value="'.$row['NUMERODIRECCION'].'" required/>
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                </div><br>
-                                                <div class="form-group row">
-                                                    <label for="staticEmail" class="col-sm-2 col-form-label">Género</label>
-                                                    <div class="col-sm-10">
-                                                    <select class="form-control" name="GENEROPACIENTE">
-                                                    <option value="femenino">Femenino</option>
-                                                    <option value="masculino">Masculino</option>
-                                                    </select>
-                                                    </div>
-                                                </div>
                                                 <input type="submit" class="btnRegister" link  value="Actualizar"/>
                                         </form>
                                     </div>
