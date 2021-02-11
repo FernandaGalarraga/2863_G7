@@ -22,6 +22,10 @@
 <body>
 <?php
 require_once("../modelo/Data.php");
+if(isset($_GET["id"])){
+$idPaciente=$_GET["id"];
+$det = new Data;
+$detalle=$det->detallePaciente($idPaciente);
 $html='
         <!-- LOGIN MODULE -->
         <div class="login">
@@ -44,60 +48,48 @@ $html='
                     <!-- SLIDESHOW -->
                     <div id="paciente">
                         <div class="one">
-                        ';
-                        session_start();
-                        $usuario=$_SESSION["usuario"];
-                        if($usuario=="adm"){
-                            $html.='<a href="Administrador.php"><input type="image" class="regresar" src="../img/salir.png"></a>';
-                        }else{
-                            $html.='<a href="Medico.php"><input type="image" class="regresar" src="../img/salir.png"></a>';
-                        }
-                        $html.='
+                        <a href="../php/ListarPaciente.php"><input type="image" class="regresar" src="../img/salir.png"></a>
                         </div>
                     </div>
                 </div>
                 <!-- LOGIN FORM -->
                 <div class="user">
-                <h3 class="register-heading">Pacientes</h3><br>
-                <table class="table text-center" cellpadding="6" border="1" align="center">
-                <thead class="thead-secondary">
-                <tr class="table-secondary">
-                    <th class="bg-info"><p class="text-center">NOMBRE</p></th>
-                    <th class="bg-info"><p class="text-center">APELLIDOS</p></th>
-                    <th class="bg-info"><p class="text-center">TELÉFONO</p></th>
-                    <th class="bg-info" colspan="2"><p class="text-center">ACCIÓN</p></th>
-                </tr>
-                </thead>';
-                $p = new Data;
-                $paciente=$p->listarPacientes();
-                foreach($paciente as $pa){
-                    $html.='
+                <h3 class="register-heading">ID PACIENTE: '.$idPaciente.'</h3><br>
+                <table class="table text-center" cellpadding="6" border="2" align="center">';
+                    foreach($detalle as $d){
+                        $html.='
                         <tr class="table-secondary">
-                            <td class="text-center table-secondary">'.$pa->NOMBRE_PACIENTE.'</td>
-                            <td class="text-center table-secondary">'.$pa->APELLIDO_PATERNO." ".$pa->APELLIDO_MATERNO.'</td>
-                            <td class="text-center table-secondary">'.$pa->TELEFONO_PACIENTE.'</td>';
-                            session_start();
-                            $usuario=$_SESSION["usuario"];
-                            if($usuario=="adm"){
-                                $html.='<td class="table-secondary">
-                                <a class="btn btn-success" href="../Controlador/detallePaciente.php?id='.$pa->CODIGO_PACIENTE.'">Detalle</a>
-                                </td>
-                                <td class="table-secondary">
-                                    <a class="btn btn-danger" href="../Controlador/eliminarPaciente.php?id='.$pa->CODIGO_DIRECCION.'">Eliminar</a>
-                                </td>';
-                            }else{
-                                $html.='
-                                <td class="table-secondary">
-                                    <a class="btn btn-success" href="../Controlador/detallePaciente.php?id='.$pa->CODIGO_PACIENTE.'">Detalle</a>
-                                </td>';
-                            }
-                        $html.='</tr>';
-                }
-                $html.= '</table>
+                            <th class="bg-info">NOMBRE</th>
+                            <td>'.$d->NOMBRE_PACIENTE.'</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th class="bg-info">APELLIDOS</th>
+                            <td>'.$d->APELLIDO_PATERNO." ".$d->APELLIDO_MATERNO.'</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th class="bg-info">FECHA NACIMIENTO</th>
+                            <td>'.$d->FECHANACIMIENTO_PACIENTE.'</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th class="bg-info">TELÉFONO</th>
+                            <td>'.$d->TELEFONO_PACIENTE.'</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th class="bg-info">GÉNERO</th>
+                            <td>'.$d->GENERO_PACIENTE.'</td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <th class="bg-info">DIRECCIÓN</th>
+                            <td>'.$d->CIUDAD_DIRECCION.", ".$d->CALLE_DIRECCION.", ".$d->NUMERO_DIRECCION.'</td>
+                        </tr>';
+                    }
+                $html.= '
+                </table><br>
                 </div>
             </div>
         </div>';
         echo $html;
+}
 ?>
 <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </body>

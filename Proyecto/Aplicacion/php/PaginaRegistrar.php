@@ -66,8 +66,8 @@
                                     <input type="text" class="input" id="telephone" name="telefonopaciente" autocomplete="off" placeholder="Teléfono" required>
                                     <h>Género</h> &nbsp; &nbsp;
                                     <select class="gender" name="generopaciente">
-                                        <option value="femenino">Femenino</option>
-                                        <option value="masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Masculino">Masculino</option>
                                     </select><br>
                                     <h3>Dirección:</h3>
                                     <input type="text" class="input" id="ciudad" name="ciudaddireccion" autocomplete="off" placeholder="Ciudad" required>
