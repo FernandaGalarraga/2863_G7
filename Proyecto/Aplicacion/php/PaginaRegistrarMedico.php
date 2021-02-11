@@ -58,8 +58,17 @@
                                  <input type="text" class="input" id="nombrepaciente" name="nombremedico" autocomplete="off" placeholder="Nombre">
                                 <input type="text" class="input" id="lastnamep" name="apellidomedico" autocomplete="off" placeholder="Apellido ">
                                 <input type="text" class="input" id="lastnamem" name="especialidad" autocomplete="off" placeholder="Especialidad">
+                                <h>Dias Atencion</h><br>;
+                                    <select class="gender" name="horarioatencion">
+                                        <option value="Lunes-Viernes">Lunes-Viernes</option>
+                                        <option value="Sabado-Domingo">Sabado-Domingo</option>
+                                    </select><br>
+                                 <h>Hora Inicio</h>;
+                                <input type="time" class="input" id="horainicio" name="horainicio" autocomplete="off" placeholder="Hora inicio">
+                                <h>Hora Fin</h>;
+                                <input type="time" class="input" id="horafin" name="horafin" autocomplete="off" placeholder="Hora final">
                                 <input type="hidden" name="op" value="new">
-                        
+                
                                         
                                     <input type="submit" class="button" name="Guardar" value="Registrar">
                                 </form>

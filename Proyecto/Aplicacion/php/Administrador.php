@@ -54,7 +54,7 @@
                         <input type="submit" class="btnCita" value="VER PACIENTES"/><br>
                         </form><br>
                         <form  action="ListarMedico.php" method="post">
-                        <input type="button" class="btnAgendar" value="VER MÉDICOS"/><br>
+                        <input type="submit" class="btnAgendar" value="VER MÉDICOS"/><br>
                         </form>
                     </div>
                 </div>
