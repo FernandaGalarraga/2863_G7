@@ -1,8 +1,9 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+<!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html><html class=''>
 <head>
@@ -16,9 +17,12 @@
 <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
 <link rel="canonical" href="https://codepen.io/dpinnick/pen/LjdLmo?limit=all&page=21&q=service" />
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
-<link rel='stylesheet' href='../css/estilom.css'>
+<link rel='stylesheet' href='../css/estilolp.css'>
 </head>
 <body>
+<?php
+require_once("../modelo/Data.php");
+$html='
         <!-- LOGIN MODULE -->
         <div class="login">
             <div class="wrap">
@@ -36,8 +40,10 @@
                     <!-- LOGO -->
                     <div class="logo">
                         <a href="#"><img class="logoim" src="../img/logo.png" alt=""></a>
+                        
                     </div>
                     <!-- SLIDESHOW -->
+                    
                     <div id="paciente">
                         <div class="one">
                         </div>
@@ -45,20 +51,37 @@
                 </div>
                 <!-- LOGIN FORM -->
                 <div class="user">
-                    <div class="salir">
-                        <a href="../modelo/cerrarSesion.php"><img class="logoim" src="../img/salir.png" alt=""></a>
-                    </div>
-                    <div class="opciones">
-                        <input type="button" class="btnPerfil" value="PERFIL"/><br>
-                        <form  action="ListarPaciente.php" method="post">
-                        <input type="submit" class="btnAgendar" value="LISTAR PACIENTES"/><br>
-                        </form>
-                        <input type="submit" class="btnCita" value="VER CITAS"/>
-                    </div>
+                <h3 class="register-heading">Pacientes</h3><br>
+                <table class="table text-center" cellpadding="6" border="1" align="center">
+                <thead class="thead-secondary">
+                <tr class="table-secondary">
+                    <th class="bg-info"><p class="text-center">CÓDIGO</p></th>
+                    <th class="bg-info"><p class="text-center">NOMBRE</p></th>
+                    <th class="bg-info"><p class="text-center">APELLIDOS</p></th>
+                    <th class="bg-info"><p class="text-center">TELÉFONO</p></th>
+                    <th class="bg-info"><p class="text-center">ACCIÓN</p></th>
+                </tr>
+                </thead>';
+                $p = new Data;
+                $paciente=$p->listarPacientes();
+                foreach($paciente as $pa){
+                    $html.='
+                        <tr class="table-secondary">
+                            <td class="text-center table-secondary">'.$pa->CODIGO_PACIENTE.'</td>
+                            <td class="text-center table-secondary">'.$pa->NOMBRE_PACIENTE.'</td>
+                            <td class="text-center table-secondary">'.$pa->APELLIDO_PATERNO." ".$pa->APELLIDO_MATERNO.'</td>
+                            <td class="text-center table-secondary">'.$pa->TELEFONO_PACIENTE.'</td>
+                            <td class="table-secondary">
+                                <a class="btn btn-info" href="../controller/eliminarPaciente.php?id='.$pa->CODIGO_PACIENTE.'">Eliminar</a>
+                            </td>
+                        </tr>';
+                }
+                $html.= '</table>
                 </div>
             </div>
-        </div>
-
+        </div>';
+        echo $html;
+?>
 <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </body>
 </html>

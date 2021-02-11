@@ -12,13 +12,11 @@ require_once("../modelo/Conexion.php");
 $cn=conectar();
 session_start();
 $id=$_SESSION["codigo"];
-$sql2="select p.NOMBREPACIENTE, p.APELLIDOPATERNO, p.APELLIDOMATERNO, p.FECHANACIMIENTOPACIENTE, p.TELEFONOPACIENTE, p.GENEROPACIENTE,
-       d.CIUDADDIRECCION, d.CALLEDIRECCION, d.NUMERODIRECCION
-       from paciente p,direccion d where p.CODIGOUSUARIO='$id'";
+
+$sql2="select * from paciente p, direccion d where p.codigousuario='$id'
+       and p.codigousuario=d.codigousuario";
 $res=$cn->query($sql2) or die($cn->error);
-$row=$res->fetch_assoc();
-$num=$res->num_rows;
-if($num>0){
+while($row=$res->fetch_assoc()){
         $html='
             <div class="container register">
                     <div class="row">
@@ -64,8 +62,8 @@ if($num>0){
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Género</label>
                                                             <select class="form-control" name="GENEROPACIENTE">
-                                                            <option value="femenino">Femenino</option>
-                                                            <option value="masculino">Masculino</option>
+                                                            <option value="Femenino">Femenino</option>
+                                                            <option value="Masculino">Masculino</option>
                                                             </select>
                                                         </div>
                                                     </div>

@@ -50,7 +50,9 @@
                     </div>
                     <div class="opciones">
                         <button class="btnPerfil" onclick="window.location.href='PaginaRegistrarMedico.php'">REGISTRAR MÉDICOS</button>
-                        <input type="button" class="btnCita" value="VER PACIENTES"/><br>
+                        <form  action="ListarPaciente.php" method="post">
+                        <input type="submit" class="btnCita" value="VER PACIENTES"/><br>
+                        </form>
                         <input type="button" class="btnAgendar" value="VER MÉDICOS"/><br>
                     </div>
                 </div>
