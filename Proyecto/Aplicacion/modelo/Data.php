@@ -8,7 +8,7 @@
         }
         public function listarPacientes(){
             $usuario=array();
-            $sql="select p.CODIGOUSUARIO,p.NOMBREPACIENTE,p.APELLIDOPATERNO,p.TELEFONOPACIENTE,d.CODIGODIRECCION from paciente p, direccion d where p.codigousuario=d.codigousuario";
+            $sql="select p.CODIGOUSUARIO,p.NOMBREPACIENTE,p.APELLIDOPATERNO,p.APELLIDOMATERNO,p.TELEFONOPACIENTE,d.CODIGODIRECCION from paciente p, direccion d where p.codigousuario=d.codigousuario";
             $res=$this->con->query($sql) or die($this->con->error);
             while($row=$res->fetch_assoc()){
                 $paciente= new Paciente();

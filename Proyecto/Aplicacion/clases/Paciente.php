@@ -8,5 +8,11 @@ class Paciente extends Direccion{
     public $FECHANACIMIENTO_PACIENTE;
     public $TELEFONO_PACIENTE;
     public $GENERO_PACIENTE;
+	
+function __construct(){
+		
+    }
+	
+	
 }
 ?>

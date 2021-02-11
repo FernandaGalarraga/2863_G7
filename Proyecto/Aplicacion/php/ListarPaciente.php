@@ -21,6 +21,7 @@
 </head>
 <body>
 <?php
+session_start();
 require_once("../modelo/Data.php");
 $html='
         <!-- LOGIN MODULE -->
@@ -44,8 +45,7 @@ $html='
                     <!-- SLIDESHOW -->
                     <div id="paciente">
                         <div class="one">
-                        ';
-                        session_start();
+                        ';                    
                         $usuario=$_SESSION["usuario"];
                         if($usuario=="adm"){
                             $html.='<a href="Administrador.php"><input type="image" class="regresar" src="../img/salir.png"></a>';
@@ -76,7 +76,7 @@ $html='
                             <td class="text-center table-secondary">'.$pa->NOMBRE_PACIENTE.'</td>
                             <td class="text-center table-secondary">'.$pa->APELLIDO_PATERNO." ".$pa->APELLIDO_MATERNO.'</td>
                             <td class="text-center table-secondary">'.$pa->TELEFONO_PACIENTE.'</td>';
-                            session_start();
+                            //session_start();
                             $usuario=$_SESSION["usuario"];
                             if($usuario=="adm"){
                                 $html.='<td class="table-secondary">
