@@ -42,6 +42,26 @@ class Medico extends Usuario{
         
           return $this->HORA_FIN;	
       }
+	public function updateMedico(){
+		$this->CODIGOUSUARIO = $_POST['CODIGOUSUARIO'];
+		$this->NOMBREMEDICO = $_POST['NOMBREMEDICO'];
+		$this->APELLIDOMEDICO = $_POST['APELLIDOMEDICO'];
+		$this->ESPECIALIDADMEDICO = $_POST['ESPECIALIDADMEDICO'];
+		
+		$sql = "UPDATE medico SET
+			CODIGOUSUARIO='$this->CODIGOUSUARIO',
+			NOMBREMEDICO='$this->NOMBREMEDICO',
+			APELLIDOMEDICO='$this->APELLIDOMEDICO',
+			ESPECIALIDADMEDICO='$this->ESPECIALIDADMEDICO',
+			WHERE CODIGOUSUARIO=$this->CODIGOUSUARIO;";
+		
+		if($this->con->query($sql)){
+			echo $this->_message_ok("Se Modifico con exito");
+		}else{
+			echo $this->_message_error("Error al modificar");
+		}			
+	}
+	
     public function listarMedico(){
       $usuario=array();
       $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico,h.diaatencionhorario 
