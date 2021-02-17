@@ -56,9 +56,9 @@ class Medico extends Usuario{
 			WHERE CODIGOUSUARIO=$this->CODIGO_USUARIO;";
 		
 		if($this->con->query($sql)){
-			echo $this->_message_ok("Se Modifico con exito");
+			echo '<script language="javascript">alert("Se actualizo correctamente");</script>';
 		}else{
-			echo $this->_message_error("Error al modificar");
+			echo '<script language="javascript">alert("No se pudo actualizar");</script>';
 		}			
 	}
 	
