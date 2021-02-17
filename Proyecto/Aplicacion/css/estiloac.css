@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
 }
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p8{
+    color:#ccc;
+    font-weight: bold;
+}
 html {
   box-sizing: border-box;
 }
@@ -131,7 +135,7 @@ body {
     color: #495057;
 }
 .container{
-    margin-top: 8%;
+    margin-top: 6%;
 }
 .regresar{
     margin-bottom: 60%;

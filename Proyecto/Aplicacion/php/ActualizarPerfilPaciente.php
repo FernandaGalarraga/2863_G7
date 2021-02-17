@@ -1,5 +1,10 @@
-<!DOCTYPE html><html class=''>
+<!DOCTYPE html>
 <head>
+<meta charset='UTF-8'><meta name="robots" content="noindex">
+<script type="text/javascript" src="../js/validaciones.js"></script>
+<script type="text/javascript" src="../js/validarFecha.js"></script>
+<script type="text/javascript" src="../js/validarLetras.js"></script>
+<script type="text/javascript" src="../js/validarTelefono.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -30,34 +35,39 @@ while($row=$res->fetch_assoc()){
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <h3 class="register-heading">Perfil</h3><br>
                                     <div class="register-form">
-                                        <form action="../Controlador/actualizarPaciente.php" method="post">
+                                        <form action="../Controlador/actualizarPaciente.php" method="post" onsubmit="return formValidationRegistro();" onclick="this.form.submit()">
                                                     </tr>
                                                     <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$id.'" required>
                                                     <tr>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Nombre</label>
-                                                            <input type="text" class="form-control" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" required/>
+                                                            <input type="text" class="form-control" id="nombrepaciente" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" onchange="formValidationRegistro()" tabindex="1" required/>
+                                                            <p id="p3"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Apellido Paterno</label>
-                                                            <input type="text" class="form-control" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" required/>
+                                                            <input type="text" class="form-control" id="lastnamep" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" onchange="formValidationRegistro()" tabindex="2" required/>
+                                                            <p id="p4"></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Apellido Materno</label>
-                                                            <input type="text" class="form-control" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" required/>
+                                                            <input type="text" class="form-control" id="lastnamem" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" onchange="formValidationRegistro()" tabindex="3" required/>
+                                                            <p id="p5"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Fecha de Nacimiento</label>
-                                                            <input type="date" class="form-control" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" required/>
+                                                            <input type="date" class="form-control" id="date" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" onchange="formValidationRegistro()" tabindex="4" required/>
+                                                            <p id="p6"></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Teléfono</label>
-                                                            <input type="text" minlength="10" maxlength="10" name="TELEFONOPACIENTE" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" required/>
+                                                            <input type="text" name="TELEFONOPACIENTE" id="telephone" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" onchange="formValidationRegistro()" tabindex="5" required/>
+                                                            <p id="p7"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Género</label>
@@ -70,18 +80,19 @@ while($row=$res->fetch_assoc()){
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Ciudad</label>
-                                                            <input type="text" class="form-control" name="CIUDADDIRECCION" value="'.$row['CIUDADDIRECCION'].'" required/>
+                                                            <input type="text" class="form-control" id="ciudad" name="CIUDADDIRECCION" value="'.$row['CIUDADDIRECCION'].'" onchange="formValidationRegistro()" tabindex="6" required/>
+                                                            <p id="p8"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Calle</label>
-                                                            <input type="text" class="form-control" name="CALLEDIRECCION" value="'.$row['CALLEDIRECCION'].'" required/>
+                                                            <input type="text" class="form-control" name="CALLEDIRECCION" value="'.$row['CALLEDIRECCION'].'" tabindex="7" required/>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
                                                             <label for="staticEmail">Número</label>
-                                                            <input type="text" class="form-control" name="NUMERODIRECCION" value="'.$row['NUMERODIRECCION'].'" required/>
+                                                            <input type="text" class="form-control" name="NUMERODIRECCION" value="'.$row['NUMERODIRECCION'].'" tabindex="8" required/>
                                                             </select>
                                                         </div>
                                                     </div>

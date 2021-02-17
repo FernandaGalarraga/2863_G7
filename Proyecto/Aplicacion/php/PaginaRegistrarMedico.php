@@ -50,22 +50,23 @@
                 <!-- LOGIN FORM -->
                 <div class="user">
                     <div class="form-wrap">
+                    <a href="Administrador.php"><input type="image" class="regresar" src="../img/salir.png"></a>
                     	 <div class="tabs-content">
-                                <h2 class="bg-light">REGISTRAR MEDICO</h2>
+                                <h2 class="bg-light">REGISTRAR MÉDICO</h2>
                                 <form class="signup-form" action="../Controlador/controllerMedico.php" method="post">
                                 <input type="text" class="input" id="user_pass" name="nombreusuario" autocomplete="off" placeholder="Usuario">
                                  <input type="password" class="input" id="user_passconfirm" name="passwordusuario" autocomplete="off" placeholder="Contraseña">
                                  <input type="text" class="input" id="nombrepaciente" name="nombremedico" autocomplete="off" placeholder="Nombre">
                                 <input type="text" class="input" id="lastnamep" name="apellidomedico" autocomplete="off" placeholder="Apellido ">
                                 <input type="text" class="input" id="lastnamem" name="especialidad" autocomplete="off" placeholder="Especialidad">
-                                <h>Dias Atencion</h><br>;
+                                <h>Días Atención</h>&nbsp; &nbsp;
                                     <select class="gender" name="horarioatencion">
                                         <option value="Lunes-Viernes">Lunes-Viernes</option>
                                         <option value="Sabado-Domingo">Sabado-Domingo</option>
                                     </select><br>
-                                 <h>Hora Inicio</h>;
+                                 <h>Hora Inicio</h>
                                 <input type="time" class="input" id="horainicio" name="horainicio" autocomplete="off" placeholder="Hora inicio">
-                                <h>Hora Fin</h>;
+                                <h>Hora Fin</h>
                                 <input type="time" class="input" id="horafin" name="horafin" autocomplete="off" placeholder="Hora final">
                                 <input type="hidden" name="op" value="new">
                 

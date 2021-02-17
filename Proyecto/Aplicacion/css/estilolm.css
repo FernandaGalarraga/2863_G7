@@ -215,128 +215,6 @@ a.button:hover {
     width: 80px;
     height: 1px;
 }
-#toggle-terms span {
-  background: #fff;
-  border-radius: 0;
-}
-/* TOGGLE TERMS */
-#toggle-terms {
-    position: absolute;
-    z-index: 4;
-    right: 0;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    margin: auto;
-    display: block;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 100%;
-    opacity: 0;
-    -webkit-transform: translate(-6px, 20px);
-    -moz-transform: translate(-6px, 20px);
-    -o-transform: translate(-6px, 20px);
-    transform: translate(-6px, 20px);
-}
-
-/* CLOSE ANIMATION*/
-@keyframes show_close {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate(-6px, -100px);
-        -moz-transform: translate(-6px, -100px);
-        -o-transform: translate(-6px, -100px);
-        transform: translate(-6px, -100px);
-    }
-    100% {
-        opacity: 1;
-        -webkit-transform: translate(-6px, 20px);
-        -moz-transform: translate(-6px, 20px);
-        -o-transform: translate(-6px, 20px);
-        transform: translate(-6px, 20px);
-    }
-}
-@keyframes hide_close {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-#toggle-terms.open {
-    animation: show_close .4s .5s 1 ease normal forwards;
-}
-#toggle-terms.closed {
-    animation: hide_close .2s .0s 1 ease normal forwards;
-}
-#toggle-terms:hover {
-    background: rgba(0, 0, 0, 0.4);
-}
-
-/* TOGGLE TERMS CROSS */
-#toggle-terms #cross {
-    position: absolute;
-    z-index: 4;
-    height: 100%;
-    width: 100%;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-}
-#toggle-terms.open #cross {
-    -webkit-transition-delay: .9s;
-    -moz-transition-delay: .9s;
-    -o-transition-delay: .9s;
-    transition-delay: .9s;
-    -webkit-transition-duration: .2s;
-    -moz-transition-duration: .2s;
-    -o-transition-duration: .2s;
-    transition-duration: .2s;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-#toggle-terms.open #cross span {
-    position: absolute;
-    z-index: 4;
-    -webkit-transition-delay: 0s;
-    -moz-transition-delay: 0s;
-    -o-transition-delay: 0s;
-    transition-delay: 0s;
-    -webkit-transition-duration: 0s;
-    -moz-transition-duration: 0s;
-    -o-transition-duration: 0s;
-    transition-duration: 0s;
-}
-#toggle-terms.open #cross span:nth-child(1) {
-    top: 15%;
-    left: 19px;
-    height: 70%;
-    width: 1px;
-}
-#toggle-terms.open #cross span:nth-child(2) {
-    left: 15%;
-    top: 19px;
-    width: 70%;
-    height: 1px;
-}
-#toggle-terms #cross span:nth-child(1) {
-    height: 0;
-    -webkit-transition-delay: .625s;
-    -moz-transition-delay: .625s;
-    -o-transition-delay: .625s;
-    transition-delay: .625s;
-}
-#toggle-terms #cross span:nth-child(2) {
-    width: 0;
-    -webkit-transition-delay: .375s;
-    -moz-transition-delay: .375s;
-    -o-transition-delay: .375s;
-    transition-delay: .375s;
-}
 
 /* SLIDESHOW */
 #paciente {
@@ -361,7 +239,7 @@ a.button:hover {
     background-size: cover;
 }
 #paciente .one {
-    background-image: url("../img/usuario.png");
+    background-image: url("../img/doctores.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
 }
@@ -577,7 +455,7 @@ input {
         background-size: auto;
     }
     #paciente .one {
-        background-position: 50% 50%;
+        background-position: 74% 50%;
     }
 
     /* CONTENT */
@@ -667,9 +545,6 @@ input {
         margin: 2em 0 1em;
         font-size: 2.5em;
     }
-    /*.three p{
-        font-style: ;
-    }*/
     #paciente p {
         font-size: 1.5em;
     }
@@ -685,6 +560,7 @@ input {
         padding: 1.5em 4.9em;
     }
 }
+
 .opciones{
     margin-top:20%;
     margin-bottom: 10%;

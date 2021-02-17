@@ -25,16 +25,10 @@ $numero=$_POST['NUMERODIRECCION'];
             WHERE p.CODIGOUSUARIO='$codigo'";
 
 	if($con->query($sql)){
-		echo "<h1 align='center'>Se modifico correctamente</h1><br />";
-		echo '<center>
-                <tr>
-                <th><a class="btn btn-primary" href="../php/Paciente.php">Regresar</a></th>
-            </tr></center>';
+		echo '<script language="javascript">alert("Se modificó correctamente");</script>';
+		echo '<script language="javascript">document.location="../php/ActualizarPerfilPaciente.php";</script>';
 	}else{
-		echo "No se pudo modificar";
-		echo '<center>
-                <tr>
-                <th><a class="btn btn-primary" href="../php/Paciente.php">Regresar</a></th>
-            </tr></center>';
+		echo '<script language="javascript">alert("No se pudo modificar");</script>';
+		echo '<script language="javascript">document.location="../php/ActualizarPerfilPaciente.php";</script>';
     }	     
 ?>

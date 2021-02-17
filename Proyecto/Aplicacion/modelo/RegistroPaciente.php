@@ -40,9 +40,9 @@
               values (NULL, '$codUsuario', '$ciudad', '$calle','$numero')";
         $res=$cn->query($sql2);
         echo '<script language="javascript">alert("Usuario registrado correctamente");</script>';
-        echo "<a href='../php/PaginaInicio.php'>REGRESAR</a>";
+        echo '<script language="javascript">document.location="../index.php";</script>';
     }else{
         echo '<script language="javascript">alert("El usuario que ingreso, ya existe");</script>';
-        echo "<a href='../php/PaginaInicio.php'>REGRESAR</a>";
+        echo '<script language="javascript">document.location="../index.php";</script>';
     }
 ?>
