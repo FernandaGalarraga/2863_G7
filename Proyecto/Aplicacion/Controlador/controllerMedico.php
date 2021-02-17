@@ -31,7 +31,7 @@
 
 		if(isset($_POST['Guardar']) && $_POST['op']=="new"){
 			$m->guardar_medico();
-                }elseif(isset($_POST['Guardar']) && $_POST['op']=="actualizar"){
+		}else if(isset($_POST['Guardar']) && $_POST['op']=="actualizar"){
 			$m->updateMedico();
 		}else if(isset($_GET['d'])){
 			$tmp=$_GET['d'];
@@ -42,8 +42,7 @@
 				$m->verMedico($id);
 			}else if($op=="del"){
 				$m->eliminarMedico($id);
-			}
-                        else if($op=="act"){
+			}                        else if($op=="act"){
 				$m->actualizarMedico($id);
 			}
 
