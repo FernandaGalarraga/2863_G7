@@ -49,7 +49,14 @@
                         <a href="../modelo/cerrarSesion.php"><img class="logoim" src="../img/salir.png" alt=""></a>
                     </div>
                     <div class="opciones">
-                        <input type="button" class="btnPerfil" value="PERFIL"/><br>
+                        <?php
+                        session_start();
+                        $id=$_SESSION["codigo"];
+                        $html='<form  action="../Controlador/controllerMedico.php?d=act/'.$id.'" method="post">
+                        <input type="submit" class="btnPerfil" value="PERFIL"/>
+                        </form>';
+                        echo $html;
+                        ?>
                         <form  action="ListarPaciente.php" method="post">
                         <input type="submit" class="btnAgendar" value="LISTAR PACIENTES"/><br>
                         </form>
