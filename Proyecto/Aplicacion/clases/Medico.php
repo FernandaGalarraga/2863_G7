@@ -47,13 +47,18 @@ class Medico extends Usuario{
 		$this->NOMBRE_MEDICO = $_POST['NOMBREMEDICO'];
 		$this->APELLIDO_MEDICO = $_POST['APELLIDOMEDICO'];
 		$this->ESPECIALIDAD_MEDICO = $_POST['ESPECIALIDADMEDICO'];
+		$this->DIAS_ATENCION = $_POST['horarioatencion'];
+    		$this->HORA_INICIO= $_POST['horainicio'];
+    		$this->HORA_FIN = $_POST['horafin'];
 		
-		$sql = "UPDATE medico SET
-			CODIGOUSUARIO='$this->CODIGO_USUARIO',
-			NOMBREMEDICO='$this->NOMBRE_MEDICO',
-			APELLIDOMEDICO='$this->APELLIDO_MEDICO',
-			ESPECIALIDADMEDICO='$this->ESPECIALIDAD_MEDICO',
-			WHERE CODIGOUSUARIO=$this->CODIGO_USUARIO;";
+		$sql = "update medico m INNER JOIN horarioatencion h ON h.CODIGOUSUARIO=m.CODIGOUSUARIO set 
+				m.NOMBREMEDICO='$this->NOMBRE_MEDICO',
+                		m.APELLIDOMEDICO='$this->APELLIDO_MEDICO',
+                		m.ESPECIALIDADMEDICO='$this->ESPECIALIDAD_MEDICO',
+               			h.HORAINICIO='$this->HORA_INICIO',
+                		h.HORAFIN='$this->HORA_FIN',
+                		h.DIAATENCIONHORARIO='$this->DIAS_ATENCION'
+                		WHERE m.CODIGOUSUARIO='$this->CODIGO_USUARIO'";
 		
 		if($this->con->query($sql)){
 			echo '<script language="javascript">alert("Se actualizo correctamente");</script>';
@@ -184,6 +189,101 @@ class Medico extends Usuario{
         echo "<a href='../php/Administrador.php'>REGRESAR</a>";					
 										
 	}
+
+	public function actualizarMedico($id){
+      $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico,h.diaatencionhorario,
+      h.horainicio,h.horafin 
+      FROM medico m,horarioatencion h WHERE m.codigousuario=h.codigousuario AND m.codigousuario='$id'";
+      $res=$this->con->query($sql) or die($this->con->error);
+      while($row=$res->fetch_assoc()){
+          $this->NOMBRE_MEDICO=$row['nombremedico'];
+          $this->APELLIDO_MEDICO=$row['apellidomedico'];
+          $this->ESPECIALIDAD_MEDICO=$row['especialidadmedico'];
+          $this->DIAS_ATENCION=$row['diaatencionhorario'];
+          $this->HORA_INICIO=$row['horainicio'];
+          $this->HORA_FIN=$row['horafin'];
+      }
+
+      $html='
+      <div class="container register">
+                    <div class="row">
+                        <div class="col-md-3 register-left">
+                        <a href="../php/Medico.php"><input type="image" class="regresar" src="../img/salir.png"></a>
+                            <img src="../img/user.png" alt=""/>
+                            <input class="btnPass" type="submit" name="" value="Cambiar contraseña"/><br/>
+                        </div>
+                        <div class="col-md-9 register-right">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <h3 class="register-heading">Perfil</h3><br>
+                                    <div class="register-form">
+                                        <form action="../Controlador/actualizarPaciente.php" method="post">
+                                                    </tr>
+                                                    <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$id.'" required>
+                                                    <tr>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Nombre</label>
+                                                            <input type="text" class="form-control" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" required/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Apellido Paterno</label>
+                                                            <input type="text" class="form-control" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" required/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Apellido Materno</label>
+                                                            <input type="text" class="form-control" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" required/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Fecha de Nacimiento</label>
+                                                            <input type="date" class="form-control" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" required/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Teléfono</label>
+                                                            <input type="text" minlength="10" maxlength="10" name="TELEFONOPACIENTE" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" required/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Género</label>
+                                                            <select class="form-control" name="GENEROPACIENTE">
+                                                            <option value="Femenino">Femenino</option>
+                                                            <option value="Masculino">Masculino</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Ciudad</label>
+                                                            <input type="text" class="form-control" name="CIUDADDIRECCION" value="'.$row['CIUDADDIRECCION'].'" required/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="staticEmail">Calle</label>
+                                                            <input type="text" class="form-control" name="CALLEDIRECCION" value="'.$row['CALLEDIRECCION'].'" required/>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12">
+                                                            <label for="staticEmail">Número</label>
+                                                            <input type="text" class="form-control" name="NUMERODIRECCION" value="'.$row['NUMERODIRECCION'].'" required/>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                <input type="submit" class="btnRegister" link  value="Actualizar"/>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>';
+    echo $html;
+
+    }
+	
   public function eliminarMedico($id){
   
     $sql="DELETE FROM `horarioatencion` WHERE `horarioatencion`.`CODIGOUSUARIO` = '$id'";
