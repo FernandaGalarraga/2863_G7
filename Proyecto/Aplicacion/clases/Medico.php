@@ -161,6 +161,7 @@ class Medico extends Usuario{
     echo $html;
 
     }
+   
 
     public function guardar_medico(){
 			
@@ -173,7 +174,9 @@ class Medico extends Usuario{
         $this->DIAS_ATENCION = $_POST['horarioatencion'];	
         $this->HORA_INICIO= $_POST['horainicio'];
         $this->HORA_FIN = $_POST['horafin'];
-
+       
+        $nomUser=$this->NOMBRE_USUARIO;
+        if(!$this->verificarUsuario($nomUser)) {
 		$sql="insert into usuario
               values (NULL, '$this->NOMBRE_USUARIO', '$this->PASSWORD_USUARIO', '$this->TIPO_USUARIO')";     
         $res=$this->con->query($sql);   
@@ -189,7 +192,12 @@ class Medico extends Usuario{
               values (NULL,'$codUsuario', '$this->HORA_INICIO', '$this->HORA_FIN','$this->DIAS_ATENCION')";
         $res=$this->con->query($sql);
         echo '<script language="javascript">alert("Usuario registrado correctamente");</script>';
-        echo '<script language="javascript">document.location="../php/Administrador.php";</script>';				
+        echo '<script language="javascript">document.location="../php/Administrador.php";</script>';
+    }else{
+        echo '<script language="javascript">alert("El usuario que ingreso, ya existe");</script>';
+        echo '<script language="javascript">document.location="../php/PaginaRegistrarMedico.php";</script>';
+
+    }				
 										
 	}
 
@@ -306,6 +314,17 @@ class Medico extends Usuario{
         echo '<script language="javascript">document.location="../php/ListarMedico.php";</script>';
     }	
 }
+private function verificarUsuario($usuario){
+    $sql="select * from usuario where NOMBREUSUARIO='$usuario'";
+    $res=$this->con->query($sql);
+    if($res->num_rows>0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
 
     
 
