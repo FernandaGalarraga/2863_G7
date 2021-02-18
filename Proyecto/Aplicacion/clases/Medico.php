@@ -168,11 +168,11 @@ class Medico extends Usuario{
 		$this->PASSWORD_USUARIO = $_POST['passwordusuario'];
 		$this->TIPO_USUARIO= "Medico";		
 		$this->NOMBRE_MEDICO = $_POST['nombremedico'];
-    $this->APELLIDO_MEDICO = $_POST['apellidomedico'];
-		$this->ESPECIALIDAD_MEDICO = $_POST['especialidad'];
-    $this->DIAS_ATENCION = $_POST['horarioatencion'];	
-    $this->HORA_INICIO= $_POST['horainicio'];
-    $this->HORA_FIN = $_POST['horafin'];
+        $this->APELLIDO_MEDICO = $_POST['apellidomedico'];
+        $this->ESPECIALIDAD_MEDICO = $_POST['especialidad'];
+        $this->DIAS_ATENCION = $_POST['horarioatencion'];	
+        $this->HORA_INICIO= $_POST['horainicio'];
+        $this->HORA_FIN = $_POST['horafin'];
 
 		$sql="insert into usuario
               values (NULL, '$this->NOMBRE_USUARIO', '$this->PASSWORD_USUARIO', '$this->TIPO_USUARIO')";     
@@ -189,7 +189,7 @@ class Medico extends Usuario{
               values (NULL,'$codUsuario', '$this->HORA_INICIO', '$this->HORA_FIN','$this->DIAS_ATENCION')";
         $res=$this->con->query($sql);
         echo '<script language="javascript">alert("Usuario registrado correctamente");</script>';
-        echo "<a href='../php/Administrador.php'>REGRESAR</a>";					
+        echo '<script language="javascript">document.location="../php/Administrador.php";</script>';				
 										
 	}
 
@@ -210,6 +210,10 @@ class Medico extends Usuario{
       $html='
       <!DOCTYPE html>
         <head>
+        <script type="text/javascript" src="../js/validaciones.js"></script>
+        <script type="text/javascript" src="../js/validarFecha.js"></script>
+        <script type="text/javascript" src="../js/validarLetras.js"></script>
+        <script type="text/javascript" src="../js/validarTelefono.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -229,7 +233,7 @@ class Medico extends Usuario{
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <h3 class="register-heading">Perfil</h3><br>
                                     <div class="register-form">
-                                        <form name="medico" action="../Controlador/controllerMedico.php" method="post">
+                                        <form name="medico" action="../Controlador/controllerMedico.php" method="post" onsubmit="return formValidationActMedico();" onclick="this.form.submit()">
                                                     </tr>
                                                     <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$id.'" required>
                                                     <input type="hidden" name="op"  value="' . $op  . '">
@@ -237,23 +241,26 @@ class Medico extends Usuario{
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Nombre</label>
-                                                            <input type="text" class="form-control" name="NOMBREMEDICO" value="'.$this->NOMBRE_MEDICO.'" required/>
+                                                            <input type="text" class="form-control" id="nombre" name="NOMBREMEDICO" value="'.$this->NOMBRE_MEDICO.'" onchange="formValidationActMedico()" tabindex="1" required/>
+                                                            <p id="p1"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Apellido</label>
-                                                            <input type="text" class="form-control" name="APELLIDOMEDICO" value="'.$this->APELLIDO_MEDICO.'" required/>
+                                                            <input type="text" class="form-control" id="apellido" name="APELLIDOMEDICO" value="'.$this->APELLIDO_MEDICO.'" onchange="formValidationActMedico()" tabindex="2" required/>
+                                                            <p id="p2"></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
                                                             <label for="staticEmail">Especialidad</label>
-                                                            <input type="text" class="form-control" name="ESPECIALIDADMEDICO" value="'.$this->ESPECIALIDAD_MEDICO.'" required/>
+                                                            <input type="text" class="form-control" id="especialidad" name="ESPECIALIDADMEDICO" value="'.$this->ESPECIALIDAD_MEDICO.'" onchange="formValidationActMedico()" tabindex="3" required/>
+                                                            <p id="p3"></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
                                                             <label for="staticEmail">Día Atención</label>
-                                                            <select class="form-control" name="DIAATENCIONHORARIO">
+                                                            <select class="form-control" name="DIAATENCIONHORARIO" tabindex="4">
                                                                 <option value="Lunes-Viernes">Lunes-Viernes</option>
                                                                 <option value="Sabado-Domingo">Sabado-Domingo</option>
                                                             </select>
@@ -262,11 +269,11 @@ class Medico extends Usuario{
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Hora Inicio</label>
-                                                            <input type="time" class="form-control" name="HORAINICIO" value="'.$this->HORA_INICIO.'" required/>
+                                                            <input type="time" class="form-control" name="HORAINICIO" value="'.$this->HORA_INICIO.'" tabindex="5" required/>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Hora Fin</label>
-                                                            <input type="time" class="form-control" name="HORAFIN" value="'.$this->HORA_FIN.'" required/>
+                                                            <input type="time" class="form-control" name="HORAFIN" value="'.$this->HORA_FIN.'" tabindex="6" required/>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -292,17 +299,11 @@ class Medico extends Usuario{
     $sql="DELETE FROM `usuario` WHERE `usuario`.`CODIGOUSUARIO` = '$id'";
     $this->con->query($sql);
     if($this->con->query($sql)){
-        echo '<script language="javascript">alert("Medico eliminado exitosamente");</script>';
-        echo '<center>
-        <tr>
-        <th><a href="../php/ListarMedico.php">Regresar</a></th>
-    </tr></center>';
+        echo '<script language="javascript">alert("Médico eliminado exitosamente");</script>';
+        echo '<script language="javascript">document.location="../php/ListarMedico.php";</script>';
     }else{
         echo '<script language="javascript">alert("No se pudo eliminar");</script>';
-        echo '<center>
-            <tr>
-            <th><a href="../php/ListarMedico.php">Regresar</a></th>
-            </tr></center>';
+        echo '<script language="javascript">document.location="../php/ListarMedico.php";</script>';
     }	
 }
 

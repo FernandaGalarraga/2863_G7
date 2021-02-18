@@ -8,7 +8,7 @@ function validarDate(p, date2){
         document.getElementById(p).innerHTML ="La fecha no puede ser mayor a la actual";
       return false;
     }
-    else if(date2<befDate){
+    else if(date2<=befDate){
         document.getElementById(p).innerHTML ="La fecha no puede ser menor o igual a 1920-01-01";
       return false;
     }else{

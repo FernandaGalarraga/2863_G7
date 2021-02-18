@@ -54,16 +54,10 @@
                     AND direccion.CODIGODIRECCION='$id'";
             if($this->con->query($sql)){
                 echo '<script language="javascript">alert("Paciente eliminado exitosamente");</script>';
-                echo '<center>
-                <tr>
-                <th><a href="../php/ListarPaciente.php">Regresar</a></th>
-            </tr></center>';
+                echo '<script language="javascript">document.location="../php/ListarPaciente.php";</script>';
             }else{
                 echo '<script language="javascript">alert("No se pudo eliminar");</script>';
-                echo '<center>
-                    <tr>
-                    <th><a href="../php/ListarPaciente.php">Regresar</a></th>
-                    </tr></center>';
+                echo '<script language="javascript">document.location="../php/ListarPaciente.php";</script>';
             }	
         }
     }

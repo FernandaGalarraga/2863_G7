@@ -35,39 +35,39 @@ while($row=$res->fetch_assoc()){
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <h3 class="register-heading">Perfil</h3><br>
                                     <div class="register-form">
-                                        <form action="../Controlador/actualizarPaciente.php" method="post" onsubmit="return formValidationRegistro();" onclick="this.form.submit()">
+                                        <form action="../Controlador/actualizarPaciente.php" method="post" onsubmit="return formValidationActPaciente();" onclick="this.form.submit()">
                                                     </tr>
                                                     <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$id.'" required>
                                                     <tr>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Nombre</label>
-                                                            <input type="text" class="form-control" id="nombrepaciente" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" onchange="formValidationRegistro()" tabindex="1" required/>
-                                                            <p id="p3"></p>
+                                                            <input type="text" class="form-control" id="nombrepaciente" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="1" required/>
+                                                            <p id="p1"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Apellido Paterno</label>
-                                                            <input type="text" class="form-control" id="lastnamep" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" onchange="formValidationRegistro()" tabindex="2" required/>
-                                                            <p id="p4"></p>
+                                                            <input type="text" class="form-control" id="lastnamep" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" onchange="formValidationActPaciente()" tabindex="2" required/>
+                                                            <p id="p2"></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Apellido Materno</label>
-                                                            <input type="text" class="form-control" id="lastnamem" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" onchange="formValidationRegistro()" tabindex="3" required/>
-                                                            <p id="p5"></p>
+                                                            <input type="text" class="form-control" id="lastnamem" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" onchange="formValidationActPaciente()" tabindex="3" required/>
+                                                            <p id="p3"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Fecha de Nacimiento</label>
-                                                            <input type="date" class="form-control" id="date" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" onchange="formValidationRegistro()" tabindex="4" required/>
-                                                            <p id="p6"></p>
+                                                            <input type="date" class="form-control" id="date" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="4" required/>
+                                                            <p id="p4"></p>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Teléfono</label>
-                                                            <input type="text" name="TELEFONOPACIENTE" id="telephone" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" onchange="formValidationRegistro()" tabindex="5" required/>
-                                                            <p id="p7"></p>
+                                                            <input type="text" name="TELEFONOPACIENTE" id="telephone" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="5" required/>
+                                                            <p id="p5"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Género</label>
@@ -80,8 +80,8 @@ while($row=$res->fetch_assoc()){
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Ciudad</label>
-                                                            <input type="text" class="form-control" id="ciudad" name="CIUDADDIRECCION" value="'.$row['CIUDADDIRECCION'].'" onchange="formValidationRegistro()" tabindex="6" required/>
-                                                            <p id="p8"></p>
+                                                            <input type="text" class="form-control" id="ciudad" name="CIUDADDIRECCION" value="'.$row['CIUDADDIRECCION'].'" onchange="formValidationActPaciente()" tabindex="6" required/>
+                                                            <p id="p6"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Calle</label>

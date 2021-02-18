@@ -2,12 +2,14 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
-
-<!DOCTYPE html><html class=''>
+<!DOCTYPE html>
 <head>
-
 <meta charset='UTF-8'><meta name="robots" content="noindex">
+<script type="text/javascript" src="../js/validaciones.js"></script>
+<script type="text/javascript" src="../js/validarLetras.js"></script>
+<script type="text/javascript" src="../js/validarTelefono.js"></script>
+<script type="text/javascript" src="../js/validarPass.js"></script>
+<script type="text/javascript" src="../js/validarUsuario.js"></script>
 <link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
 <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
 <link rel="canonical" href="https://codepen.io/dpinnick/pen/LjdLmo?limit=all&page=21&q=service" />
@@ -53,21 +55,26 @@
                     <a href="Administrador.php"><input type="image" class="regresar" src="../img/salir.png"></a>
                     	 <div class="tabs-content">
                                 <h2 class="bg-light">REGISTRAR MÉDICO</h2>
-                                <form class="signup-form" action="../Controlador/controllerMedico.php" method="post">
-                                <input type="text" class="input" id="user_pass" name="nombreusuario" autocomplete="off" placeholder="Usuario">
-                                 <input type="password" class="input" id="user_passconfirm" name="passwordusuario" autocomplete="off" placeholder="Contraseña">
-                                 <input type="text" class="input" id="nombrepaciente" name="nombremedico" autocomplete="off" placeholder="Nombre">
-                                <input type="text" class="input" id="lastnamep" name="apellidomedico" autocomplete="off" placeholder="Apellido ">
-                                <input type="text" class="input" id="lastnamem" name="especialidad" autocomplete="off" placeholder="Especialidad">
+                                <form class="signup-form" action="../Controlador/controllerMedico.php" method="post" onsubmit="return formValidationMedico();" onclick="this.form.submit()">
+                                <input type="text" class="input" id="usuario" name="nombreusuario" autocomplete="off" placeholder="Usuario" onchange="formValidationMedico()" tabindex="1" required>
+                                    <p id="p1"></p>
+                                <input type="password" class="input" id="pass" name="passwordusuario" autocomplete="off" placeholder="Contraseña" onchange="formValidationMedico()" tabindex="2" required>
+                                    <p id="p2"></p>
+                                <input type="text" class="input" id="nombrepaciente" name="nombremedico" autocomplete="off" placeholder="Nombre" onchange="formValidationMedico()" tabindex="3" required>
+                                    <p id="p3"></p>
+                                <input type="text" class="input" id="lastname" name="apellidomedico" autocomplete="off" placeholder="Apellido" onchange="formValidationMedico()" tabindex="4" required>
+                                    <p id="p4"></p>
+                                <input type="text" class="input" id="especialidad" name="especialidad" autocomplete="off" placeholder="Especialidad" onchange="formValidationMedico()" tabindex="5" required>
+                                    <p id="p5"></p>
                                 <h>Días Atención</h>&nbsp; &nbsp;
-                                    <select class="gender" name="horarioatencion">
+                                    <select class="gender" name="horarioatencion" tabindex="6">
                                         <option value="Lunes-Viernes">Lunes-Viernes</option>
                                         <option value="Sabado-Domingo">Sabado-Domingo</option>
                                     </select><br>
                                  <h>Hora Inicio</h>
-                                <input type="time" class="input" id="horainicio" name="horainicio" autocomplete="off" placeholder="Hora inicio">
+                                <input type="time" class="input" id="horainicio" name="horainicio" autocomplete="off" placeholder="Hora inicio" tabindex="7" required>
                                 <h>Hora Fin</h>
-                                <input type="time" class="input" id="horafin" name="horafin" autocomplete="off" placeholder="Hora final">
+                                <input type="time" class="input" id="horafin" name="horafin" autocomplete="off" placeholder="Hora final" tabindex="8" required>
                                 <input type="hidden" name="op" value="new">
                 
                                         
