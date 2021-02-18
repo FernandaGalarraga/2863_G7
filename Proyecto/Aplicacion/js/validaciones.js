@@ -80,3 +80,11 @@ function formValidationActMedico(){
     }
     return false;
 }
+function formValidationPassword(){
+    var contra = document.getElementById('password').value;
+    var concontra = document.getElementById('cpassword').value;
+    if (valicpassword("p7",contra,concontra)){
+        return true;
+    }
+    return false;
+}

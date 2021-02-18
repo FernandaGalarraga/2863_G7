@@ -1,5 +1,5 @@
 function soloLetras(p,inputtext){
-    var letters = /^[A-Za-z- ]+$/;  
+    let letters = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g; 
     if(inputtext.match(letters))
     {
       document.getElementById(p).innerHTML ="";

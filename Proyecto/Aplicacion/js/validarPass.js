@@ -8,3 +8,14 @@ function validarPassword(p,inputtext){
       return true;
   }
 }
+
+function valicpassword(p,pw,cpw){
+if((pw != cpw)) {
+  document.getElementById(p).innerHTML ="Las contrasenas no coinciden";
+  return false;	
+}
+else{
+  document.getElementById(p).innerHTML ="";
+    return true;
+}
+}
