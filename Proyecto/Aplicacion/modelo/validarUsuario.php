@@ -1,5 +1,8 @@
 <?php
 //require_once "../clases/Usuario.php";
+// Nombre tester: Patricio Bazantes
+//Fecha: 19 de febrero del 2021
+// Prueba tecnica: caja blanca y caja negra
 require_once "Conexion.php";
 $cn=conectar();
 session_start();
