@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300);
+.btnRegister{
+    margin-top: 4%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+label{
+    text-align: left;
+    font-size: 12px;
+}
+.texto-agenda{
+    text-align: center;
+    font: 16px/26px "Raleway", sans-serif;
+}
+#p1, #p2{
+    color:#28A55F;
+    font-weight: bold;
+    font-size: 14px;
+}

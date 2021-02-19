@@ -10,6 +10,7 @@
 <script type="text/javascript" src="../js/validarTelefono.js"></script>
 <script type="text/javascript" src="../js/validarPass.js"></script>
 <script type="text/javascript" src="../js/validarUsuario.js"></script>
+<script type="text/javascript" src="../js/validarHora.js"></script>
 <link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
 <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
 <link rel="canonical" href="https://codepen.io/dpinnick/pen/LjdLmo?limit=all&page=21&q=service" />
@@ -72,9 +73,11 @@
                                         <option value="Sabado-Domingo">Sabado-Domingo</option>
                                     </select><br>
                                  <h>Hora Inicio</h>
-                                <input type="time" class="input" id="horainicio" name="horainicio" autocomplete="off" placeholder="Hora inicio" tabindex="7" required>
+                                <input type="time" class="input" id="horainicio" name="horainicio" autocomplete="off" placeholder="Hora inicio" onchange="formValidationMedico()" tabindex="7" required>
+                                    <p id="p6"></p>
                                 <h>Hora Fin</h>
-                                <input type="time" class="input" id="horafin" name="horafin" autocomplete="off" placeholder="Hora final" tabindex="8" required>
+                                <input type="time" class="input" id="horafin" name="horafin" autocomplete="off" placeholder="Hora final" onchange="formValidationMedico()" tabindex="8" required>
+                                    <p id="p7"></p>
                                 <input type="hidden" name="op" value="new">
                 
                                         

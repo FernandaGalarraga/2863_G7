@@ -223,6 +223,7 @@ class Medico extends Usuario{
         <script type="text/javascript" src="../js/validarLetras.js"></script>
         <script type="text/javascript" src="../js/validarTelefono.js"></script>
         <script type="text/javascript" src="../js/validarPass.js"></script>
+        <script type="text/javascript" src="../js/validarHora.js"></script>
         <script type="text/javascript" src="../js/popup.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -283,12 +284,13 @@ class Medico extends Usuario{
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Hora Inicio</label>
-                                                            <input type="time" class="form-control" name="HORAINICIO" value="'.$this->HORA_INICIO.'" tabindex="5" required/>
+                                                            <input type="time" class="form-control" name="HORAINICIO" id="hinicio" value="'.$this->HORA_INICIO.'" onchange="formValidationActMedico()" tabindex="5" required/>
+                                                            <p id="p4"></p>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label for="staticEmail">Hora Fin</label>
-                                                            <input type="time" class="form-control" name="HORAFIN" value="'.$this->HORA_FIN.'" tabindex="6" required/>
-                                                            </select>
+                                                            <input type="time" class="form-control" name="HORAFIN" id="hfinal" value="'.$this->HORA_FIN.'" onchange="formValidationActMedico()" tabindex="6" required/>
+                                                            <p id="p5"></p>
                                                         </div>
                                                     </div>
                                                 <input type="submit" class="btnRegister" link name="Guardar" value="Actualizar"/>
