@@ -12,18 +12,18 @@
   require_once "../modelo/Conexion.php";
   session_start();
   $id=$_SESSION['codigo'];
-  function get_combo_db($tabla,$valor,$etiqueta, $etiqueta1, $nombre, $defecto){
+  function get_combo_db($tabla,$valor,$etiqueta, $etiqueta1, $nombre){
     $con=conectar();
     $html = '<select class="form-control form-control-lg" name="' . $nombre . '" required>';
     $sql = "SELECT $valor,$etiqueta, $etiqueta1 FROM $tabla;";
     $res = $con->query($sql);
     while($row = $res->fetch_assoc()){
-        $html .= ($defecto == $row[$valor])?'<option value="' . $row[$valor] . '" selected>' . $row[$etiqueta] ." ".$row[$etiqueta1]. '</option>' . "\n":'<option value="' . $row[$valor] . '">' . $row[$etiqueta] . " " . $row[$etiqueta1] . '</option>' . "\n";
+        $html .='<option value="' . $row[$valor] . '">' . $row[$etiqueta] . " " . $row[$etiqueta1] . '</option>' . "\n";
     }
     $html .= '</select>';
     return $html;
   }
-$html.='<form action="../Controlador/agendarCita.php" method="post" onsubmit="return formValidationAgenda();" onclick="this.form.submit()">
+$html='<form action="../Controlador/agendarCita.php" method="post" onsubmit="return formValidationAgenda();" onclick="this.form.submit()">
   </tr>
     <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$id.'" required>
   <tr>
@@ -42,7 +42,7 @@ $html.='<form action="../Controlador/agendarCita.php" method="post" onsubmit="re
       <div class="form-row">
         <div class="form-group col-md-12">
           <label class="texto-agenda" for="staticEmail">Médico</label>
-          '.get_combo_db("medico","codigousuario","nombremedico", "apellidomedico", "codigousuario", $idMedico).'
+          '.get_combo_db("medico","codigousuario","nombremedico", "apellidomedico", "codigousuario").'
         </div>
       </div><br>
       <div class="form-row">

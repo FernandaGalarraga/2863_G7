@@ -7,7 +7,7 @@
 <?php
 date_default_timezone_set("America/Guayaquil");
 $desde = 8;
-$hasta = 22;
+$hasta = 24;
 $hora_actual = intval(date("H"));
 if ($hora_actual >= $desde && $hora_actual < $hasta) {
 ?>
