@@ -102,12 +102,12 @@ function formValidationPassword(){
 }
 
 function formValidationAgenda(){
-    var date = document.getElementById('fecha').value;
-    var hour = document.getElementById('hora').value;
+    var date = document.getElementById('fechaConsulta').value;
+   // var hour = document.getElementById('hora').value;
     if(validarFecha("p1", date)){
-    if(validarHora("p2", hour)){
+   // if(validarHora("p2", hour)){
         return true;
-    }
+    //}
     }
     return false;
 }

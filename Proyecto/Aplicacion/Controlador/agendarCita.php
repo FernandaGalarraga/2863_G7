@@ -5,7 +5,7 @@ require_once "../modelo/Conexion.php";
     $id=$_SESSION['codigo'];
     $idMedico=$_POST['codigousuario'];
     $date=$_POST['FECHACONSULTA'];
-    $hora=$_POST['HORACONSULTA'];
+    $hora=$_POST['cbx_horaMedico'];
     $tipo=$_POST['TIPOCONSULTA'];
     $sql="insert into citamedica values (null, '$idMedico', '$id', '$tipo', '$date', '$hora');";
     $res=$con->query($sql) or die($con->error);
@@ -16,6 +16,8 @@ require_once "../modelo/Conexion.php";
         echo '<script language="javascript">alert("No se pudo agendar");</script>';
 		echo '<script language="javascript">document.location="../php/Paciente.php";</script>';
     }
+
+
 ?>
 </html>
 
