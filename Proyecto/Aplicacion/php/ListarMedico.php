@@ -63,7 +63,6 @@ $html='
                 <tr class="table-secondary">
                     <th class="bg-info"><p class="text-center">NOMBRE APELLIDO</p></th>
                     <th class="bg-info"><p class="text-center">ESPECIALIDAD</p></th>
-                    <th class="bg-info"><p class="text-center">DIAS ATENCION</p></th>
                     <th class="bg-info" colspan="2"><p class="text-center">ACCIÓN</p></th>
                 </tr>
                 </thead>';
@@ -73,8 +72,7 @@ $html='
                     $html.='
                         <tr class="table-secondary">
                             <td class="text-center table-secondary">'.$me->getNombreMedico().' '.$me->getApellidoMedico().'</td>
-                            <td class="text-center table-secondary">'.$me->getEspecialidadMedico().'</td>
-                            <td class="text-center table-secondary">'.$me->getDiasAtencion().'</td>';
+                            <td class="text-center table-secondary">'.$me->getEspecialidadMedico().'</td>';
                             //session_start();
                             $usuario=$_SESSION["usuario"];
                             if($usuario=="adm"){

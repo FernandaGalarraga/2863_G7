@@ -12,12 +12,13 @@ session_start();
         $res = $cn->query($sql) or die($cn->error);
         if($res->num_rows>0)
         {
-            $sql="SELECT * FROM usuario WHERE usuario.NOMBREUSUARIO='$usuario' AND usuario.PASSWORDUSUARIO='$clave'";
+            $sql="SELECT u.CODIGOUSUARIO, u.NOMBREUSUARIO, u.PASSWORDUSUARIO, u.TIPOUSUARIO
+                  FROM usuario u
+                  WHERE u.NOMBREUSUARIO='$usuario' AND u.PASSWORDUSUARIO='$clave'";
             $res = $cn->query($sql) or die($cn->error);
             if($res->num_rows>0){
 
                 while($row = $res->fetch_assoc()){
-                    
                 $_SESSION["usuario"]=$row["NOMBREUSUARIO"];
                 $_SESSION["codigo"]=$row["CODIGOUSUARIO"];
                 if($row["TIPOUSUARIO"]=="Paciente"){

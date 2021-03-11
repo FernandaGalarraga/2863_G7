@@ -4,7 +4,6 @@ class Medico extends Usuario{
     private $NOMBRE_MEDICO;
     private $APELLIDO_MEDICO;
     private $ESPECIALIDAD_MEDICO;
-    private $DIAS_ATENCION;
     private $HORA_INICIO;
     private $HORA_FIN;
 
@@ -29,11 +28,6 @@ class Medico extends Usuario{
         
       return $this->ESPECIALIDAD_MEDICO;	
       }
-      
-      public function getDiasAtencion(){
-        
-      return $this->DIAS_ATENCION;	
-      }
       public function getHoraInicio(){
         
         return $this->HORA_INICIO;	
@@ -47,7 +41,6 @@ class Medico extends Usuario{
 		$this->NOMBRE_MEDICO = $_POST['NOMBREMEDICO'];
 		$this->APELLIDO_MEDICO = $_POST['APELLIDOMEDICO'];
 		$this->ESPECIALIDAD_MEDICO = $_POST['ESPECIALIDADMEDICO'];
-		$this->DIAS_ATENCION = $_POST['DIAATENCIONHORARIO'];
     	$this->HORA_INICIO= $_POST['HORAINICIO'];
     	$this->HORA_FIN = $_POST['HORAFIN'];
 		session_start();
@@ -57,8 +50,7 @@ class Medico extends Usuario{
                 		m.APELLIDOMEDICO='$this->APELLIDO_MEDICO',
                 		m.ESPECIALIDADMEDICO='$this->ESPECIALIDAD_MEDICO',
                			h.HORAINICIO='$this->HORA_INICIO',
-                		h.HORAFIN='$this->HORA_FIN',
-                		h.DIAATENCIONHORARIO='$this->DIAS_ATENCION'
+                		h.HORAFIN='$this->HORA_FIN'
                 		WHERE m.CODIGOUSUARIO='$this->CODIGO_USUARIO'";
 		
 		if($this->con->query($sql)){
@@ -72,7 +64,7 @@ class Medico extends Usuario{
 	
     public function listarMedico(){
       $usuario=array();
-      $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico,h.diaatencionhorario 
+      $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico 
       FROM medico m,horarioatencion h WHERE m.codigousuario=h.codigousuario";
       $res=$this->con->query($sql) or die($this->con->error);
       while($row=$res->fetch_assoc()){
@@ -81,13 +73,12 @@ class Medico extends Usuario{
           $medico->NOMBRE_MEDICO=$row['nombremedico'];
           $medico->APELLIDO_MEDICO=$row['apellidomedico'];
           $medico->ESPECIALIDAD_MEDICO=$row['especialidadmedico'];
-          $medico->DIAS_ATENCION=$row['diaatencionhorario'];
           array_push($usuario, $medico);
       }
       return $usuario;
     }
     public function verMedico($id){
-      $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico,h.diaatencionhorario,
+      $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico,
       h.horainicio,h.horafin 
       FROM medico m,horarioatencion h WHERE m.codigousuario=h.codigousuario AND m.codigousuario='$id'";
       $res=$this->con->query($sql) or die($this->con->error);
@@ -95,7 +86,6 @@ class Medico extends Usuario{
           $this->NOMBRE_MEDICO=$row['nombremedico'];
           $this->APELLIDO_MEDICO=$row['apellidomedico'];
           $this->ESPECIALIDAD_MEDICO=$row['especialidadmedico'];
-          $this->DIAS_ATENCION=$row['diaatencionhorario'];
           $this->HORA_INICIO=$row['horainicio'];
           $this->HORA_FIN=$row['horafin'];
       }
@@ -144,15 +134,10 @@ class Medico extends Usuario{
                           <td>'.$this->ESPECIALIDAD_MEDICO.'</td>
                       </tr>
                       <tr class="table-secondary">
-                          <th class="bg-info">DIAS ATENCION</th>
-                          <td>'.$this->DIAS_ATENCION.'</td>
-                      </tr>
-                      <tr class="table-secondary">
                           <th class="bg-info">HORA DE ATENCION</th>
                           <td>De: '.$this->HORA_INICIO.' a '.$this->HORA_FIN.' </td>
                       </tr>
                       ';
-                  
               $html.= '
               </table><br>
               </div>
@@ -171,7 +156,6 @@ class Medico extends Usuario{
 		$this->NOMBRE_MEDICO = $_POST['nombremedico'];
         $this->APELLIDO_MEDICO = $_POST['apellidomedico'];
         $this->ESPECIALIDAD_MEDICO = $_POST['especialidad'];
-        $this->DIAS_ATENCION = $_POST['horarioatencion'];	
         $this->HORA_INICIO= $_POST['horainicio'];
         $this->HORA_FIN = $_POST['horafin'];
        
@@ -189,7 +173,7 @@ class Medico extends Usuario{
               values ('$codUsuario', '$this->NOMBRE_MEDICO', '$this->APELLIDO_MEDICO','$this->ESPECIALIDAD_MEDICO')";
         $res=$this->con->query($sql);
         $sql="insert into horarioatencion
-              values (NULL,'$codUsuario', '$this->HORA_INICIO', '$this->HORA_FIN','$this->DIAS_ATENCION')";
+              values (NULL,'$codUsuario', '$this->HORA_INICIO', '$this->HORA_FIN')";
         $res=$this->con->query($sql);
         echo '<script language="javascript">alert("Usuario registrado correctamente");</script>';
         echo '<script language="javascript">document.location="../php/Administrador.php";</script>';
@@ -202,7 +186,7 @@ class Medico extends Usuario{
 	}
 
 	public function actualizarMedico($id){
-      $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico,h.diaatencionhorario,
+      $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico,
       h.horainicio,h.horafin 
       FROM medico m,horarioatencion h WHERE m.codigousuario=h.codigousuario AND m.codigousuario='$id'";
       $res=$this->con->query($sql) or die($this->con->error);
@@ -210,7 +194,6 @@ class Medico extends Usuario{
         $this->NOMBRE_MEDICO=$row['nombremedico'];
         $this->APELLIDO_MEDICO=$row['apellidomedico'];
         $this->ESPECIALIDAD_MEDICO=$row['especialidadmedico'];
-        $this->DIAS_ATENCION=$row['diaatencionhorario'];
         $this->HORA_INICIO=$row['horainicio'];
         $this->HORA_FIN=$row['horafin'];
     }
@@ -270,15 +253,6 @@ class Medico extends Usuario{
                                                             <label for="staticEmail">Especialidad</label>
                                                             <input type="text" class="form-control" id="especialidad" name="ESPECIALIDADMEDICO" value="'.$this->ESPECIALIDAD_MEDICO.'" onchange="formValidationActMedico()" tabindex="3" required/>
                                                             <p id="p3"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-12">
-                                                            <label for="staticEmail">Día Atención</label>
-                                                            <select class="form-control" name="DIAATENCIONHORARIO" tabindex="4">
-                                                                <option value="Lunes-Viernes">Lunes-Viernes</option>
-                                                                <option value="Sabado-Domingo">Sabado-Domingo</option>
-                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">

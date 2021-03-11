@@ -1,12 +1,11 @@
 <html>
 <head>
   <link rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-  <link rel='stylesheet' href='../css/estilos.css'>
 </head>
 <body>
 <?php
 date_default_timezone_set("America/Guayaquil");
-$desde = 8;
+$desde = 7;
 $hasta = 24;
 $hora_actual = intval(date("H"));
 if ($hora_actual >= $desde && $hora_actual < $hasta) {

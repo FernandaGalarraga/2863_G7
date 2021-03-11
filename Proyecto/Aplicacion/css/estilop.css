@@ -1,4 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300);
+.texto1{
+    color:aliceblue;
+    font-weight: bold;
+}
 /* GENERAL RESETS */
 * {
     margin: 0;
@@ -753,7 +757,7 @@ input {
   transform: scale(1) translate3d(0,0,0);
 }
 .opciones{
-    margin-top:20%;
+    margin-top:10%;
     margin-bottom: 10%;
 }
 .btnPerfil{
@@ -764,7 +768,6 @@ input {
     border-radius: 10px;
     border:cadetblue 2px solid;
     background-color: darkcyan;
-    font-weight: bold;
     font-size: 24px;
     margin-bottom: 8%;
 }
@@ -776,7 +779,6 @@ input {
     border-radius: 10px;
     border:#28A55F 2px solid;
     background-color:#4FDA8C;
-    font-weight: bold;
     font-size: 24px;
     margin-bottom: 8%;
 }
@@ -788,7 +790,10 @@ input {
     border-radius: 10px;
     border:rgb(38, 107, 100) 2px solid;
     background-color:rgba(62,181,169,1);
-    font-weight: bold;
     font-size: 24px;
     margin-bottom: 5%;
+}
+#disabled{
+    pointer-events: none;
+    cursor: default;
 }

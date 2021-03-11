@@ -67,11 +67,6 @@
                                     <p id="p4"></p>
                                 <input type="text" class="input" id="especialidad" name="especialidad" autocomplete="off" placeholder="Especialidad" onchange="formValidationMedico()" tabindex="5" required>
                                     <p id="p5"></p>
-                                <h>Días Atención</h>&nbsp; &nbsp;
-                                    <select class="gender" name="horarioatencion" tabindex="6">
-                                        <option value="Lunes-Viernes">Lunes-Viernes</option>
-                                        <option value="Sabado-Domingo">Sabado-Domingo</option>
-                                    </select><br>
                                  <h>Hora Inicio</h>
                                 <input type="time" class="input" id="horainicio" name="horainicio" autocomplete="off" placeholder="Hora inicio" onchange="formValidationMedico()" tabindex="7" required>
                                     <p id="p6"></p>

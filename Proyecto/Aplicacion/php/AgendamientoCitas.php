@@ -89,7 +89,7 @@ $html='<form action="../Controlador/agendarCita.php" method="post" onsubmit="ret
           </select>
         </div>
       </div>
-  <input type="submit" class="btnRegister" link  value="Guardar"/>
+  <input type="submit" class="btnRegister" link  value="Agendar"/>
 </form>';
 echo $html;
 ?>                               
