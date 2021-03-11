@@ -43,7 +43,7 @@
   $id=$_SESSION['codigo'];
   function get_combo_db($tabla,$valor,$etiqueta, $etiqueta1, $nombre){
     $con=conectar();
-    $html = '<select class="form-control form-control-lg" name="' . $nombre . '" id="cbx_Medico" required>';
+    $html = '<select class="text-center form-control form-control-lg" name="' . $nombre . '" id="cbx_Medico" required>';
     $sql = "SELECT $valor,$etiqueta, $etiqueta1 FROM $tabla;";
     $res = $con->query($sql);
     while($row = $res->fetch_assoc()){
@@ -64,14 +64,14 @@ $html='<form action="../Controlador/agendarCita.php" method="post" onsubmit="ret
   </div>
 </div><br>
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
           <label class="texto-agenda" for="exampleInputEmail1">Fecha</label>
-          <input type="date" class="form-control form-control-lg" id="fechaConsulta" name="FECHACONSULTA" onchange="formValidationAgenda()" tabindex="1" required/>
+          <input type="date" class="text-center form-control form-control-lg" id="fechaConsulta" name="FECHACONSULTA" onchange="formValidationAgenda()" tabindex="1" required/>
           <p id="p1"></p>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
           <label class="texto-agenda" for="staticEmail">Seleccione una hora</label>      
-          <select  class="form-control form-control-lg" name="cbx_horaMedico" id="cbx_horaMedico"></select>
+          <select class="text-center form-control form-control-lg" name="cbx_horaMedico" id="cbx_horaMedico"></select>
         </div>
       </div><br>
 
@@ -79,7 +79,7 @@ $html='<form action="../Controlador/agendarCita.php" method="post" onsubmit="ret
       <div class="form-row">
         <div class="form-group col-md-12">
           <label class="texto-agenda" for="staticEmail">Tipo de consulta</label>
-          <select class="form-control form-control-lg" name="TIPOCONSULTA" required>
+          <select class="text-center form-control form-control-lg" name="TIPOCONSULTA" required>
             <option value="">--Seleccionar--</option>
             <option value="Audiometria en cabina">Audiometría en cabina</option>
             <option value="Espirometria">Espirometría</option>
