@@ -64,7 +64,7 @@ $res=$cn->query($sql) or die($con->error);
              <td class="text-center success"><?php echo $row["fechaconsulta"]; ?></td>  
              <td class="text-center success"><?php echo $row["horaconsulta"]; ?></td>
              <?php
-
+		/*
              $html='<td class="text-center success">
                 <a class="btn btn-success" href="../Controlador/detallePaciente.php?id='.$pa->CODIGO_PACIENTE.'">Actualizar</a>
               </td>
@@ -72,7 +72,9 @@ $res=$cn->query($sql) or die($con->error);
                 <a class="btn btn-danger" href="../Controlador/eliminarPaciente.php?id='.$pa->CODIGO_DIRECCION.'">Cancelar cita</a>
               </td>';
               echo $html; 
+			  */
              ?>
+			 
            </tr>  
            <?php  
            }  

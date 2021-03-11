@@ -7,12 +7,12 @@ require_once "Conexion.php";
 	$id_medico = $_POST['CODIGOUSUARIO'];
     $fecha=$_POST['FECHACONSULTA'];
     $cn=conectar();  
-    unset($horasDisponibles);
     $horasDisponibles=array();
     $sql="SELECT * FROM `horarioatencion` WHERE CODIGOUSUARIO= '$id_medico'";
     $resUser=$cn->query($sql);
+    $horaActual=date('H:i:s');
+	$fechaActual=date('Y-m-d');
 
-  
     while($reg=$resUser->fetch_array())
 	{
         $horaInicio=$reg['HORAINICIO'];
@@ -26,7 +26,6 @@ require_once "Conexion.php";
         $horaInicio= date("H:i:s",strtotime($horaInicio."+ 30 minute")); 
         array_push($horasDisponibles,$horaInicio);
     }
-    unset($horasMed);
     $horasMed=array();
     $sqlCitaMedica="SELECT * FROM `citamedica` WHERE MED_CODIGOUSUARIO='$id_medico' AND FECHACONSULTA='$fecha'";
     $resUser=$cn->query($sqlCitaMedica);
@@ -57,10 +56,15 @@ foreach ($horasNoDisponibles as $valor) {
         if($valor == $valor2){
             $borrar=array_search($valor,$horasDisponibles);
             unset($horasDisponibles[$borrar]);            
-        }   
+        }		
     }
 }
-
+	foreach ($horasDisponibles as $valor) {		
+        if($valor <= $horaActual && $fechaActual==$fecha){
+            $borrar=array_search($valor,$horasDisponibles);
+            unset($horasDisponibles[$borrar]);            
+       }		
+	}
     $html= "<option value=''>Horas disponibles</option>";
 
     foreach($horasDisponibles as $hora){
