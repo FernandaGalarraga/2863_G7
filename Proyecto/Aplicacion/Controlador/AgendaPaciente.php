@@ -19,7 +19,7 @@ $id=$_SESSION['codigo'];
          ON c.CODIGOUSUARIO=p.CODIGOUSUARIO
          WHERE p.CODIGOUSUARIO='$id'  
          AND c.fechaconsulta BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'  
-      ";  
+      order by c.fechaconsulta desc";  
       $res=$cn->query($sql) or die($con->error); 
       $output .= '  
         <table class="table table-striped">  
@@ -52,10 +52,10 @@ $id=$_SESSION['codigo'];
                          </td>';
                          }else{
                          $output.='<td class="text-center success">
-                              <a class="btn btn-success" href="../Controlador/detallePaciente.php?id='.$pa->CODIGO_PACIENTE.'">Actualizar</a>
+                              <a class="btn btn-success" href="#">Actualizar</a>
                          </td>
                          <td class="text-center success">
-                              <a class="btn btn-danger" href="../Controlador/eliminarPaciente.php?id='.$pa->CODIGO_DIRECCION.'">Cancelar cita</a>
+                              <a class="btn btn-danger" href="#">Cancelar cita</a>
                          </td>';
                          }
                      $output.='</tr>  

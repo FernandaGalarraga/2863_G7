@@ -51,14 +51,14 @@ require_once "Conexion.php";
 
     }
 
-foreach ($horasNoDisponibles as $valor) {
-    foreach ($horasDisponibles as $valor2) {
-        if($valor == $valor2){
+	foreach ($horasNoDisponibles as $valor) {
+		foreach ($horasDisponibles as $valor2) {
+			if($valor == $valor2){
             $borrar=array_search($valor,$horasDisponibles);
             unset($horasDisponibles[$borrar]);            
-        }		
-    }
-}
+			}		
+		}
+	}
 	foreach ($horasDisponibles as $valor) {		
         if($valor <= $horaActual && $fechaActual==$fecha){
             $borrar=array_search($valor,$horasDisponibles);

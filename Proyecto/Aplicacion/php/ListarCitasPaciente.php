@@ -22,7 +22,8 @@ $sql="SELECT c.codigocitamedica, concat_ws(' ', m.NOMBREMEDICO, m.APELLIDOMEDICO
       INNER JOIN paciente p
       ON c.CODIGOUSUARIO=p.CODIGOUSUARIO
       WHERE p.CODIGOUSUARIO='$id'
-      AND c.fechaconsulta='$date'";
+      AND c.fechaconsulta='$date'
+	  order by c.fechaconsulta desc";
 $res=$cn->query($sql) or die($con->error);
 ?>
 <div class="login">
@@ -64,15 +65,15 @@ $res=$cn->query($sql) or die($con->error);
              <td class="text-center success"><?php echo $row["fechaconsulta"]; ?></td>  
              <td class="text-center success"><?php echo $row["horaconsulta"]; ?></td>
              <?php
-		/*
+			
              $html='<td class="text-center success">
-                <a class="btn btn-success" href="../Controlador/detallePaciente.php?id='.$pa->CODIGO_PACIENTE.'">Actualizar</a>
+                <a class="btn btn-success" href="#">Actualizar</a>
               </td>
               <td class="text-center success">
-                <a class="btn btn-danger" href="../Controlador/eliminarPaciente.php?id='.$pa->CODIGO_DIRECCION.'">Cancelar cita</a>
+                <a class="btn btn-danger" href="#">Cancelar cita</a>
               </td>';
               echo $html; 
-			  */
+			 
              ?>
 			 
            </tr>  
