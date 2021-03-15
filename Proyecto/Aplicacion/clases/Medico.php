@@ -91,6 +91,29 @@ class Medico extends Usuario{
       }
 
       $html='
+      <div class="contenedor">
+                <div class="overlay" id="overlay">
+                    <div class="popup" id="popup">
+                        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+                        <h3>Cambiar contraseña</h3>
+                        <form action="../Controlador/actualizarContrasenia.php" method="post" onsubmit="return formValidationActPaciente();" onclick="this.form.submit()">
+                            <div class="contenedor-inputs">
+                                <input type="password" name="opassword" placeholder="Contraseña antigua" tabindex="9" required>
+                                <input id="password" name="npassword" type="password" placeholder="Contraseña nueva" tabindex="10" required>
+                                <input id="cpassword" name="cpassword" type="password" placeholder="Confirmar contraseña" onchange="formValidationPassword()" tabindex="11" required>
+                                <p id="p7"></p>
+                            </div>
+                            <input type="submit" name="re_pass" class="btn-submit" value="Guardar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="../js/popup.js"></script>
+            </body>
+            </html>
+      ';
+/*
+      $html='
       <!-- LOGIN MODULE -->
       <div class="login">
           <div class="wrap">
@@ -143,6 +166,7 @@ class Medico extends Usuario{
               </div>
           </div>
       </div>';
+      */
     echo $html;
 
     }
