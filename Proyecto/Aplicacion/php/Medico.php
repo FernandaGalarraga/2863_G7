@@ -77,7 +77,7 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="#container" onclick="includeHTMLPHPFile('../Controlador/controllerMedico.php?d=act/'.$id.'','container');">
+                        <a href="#container" onclick="includeHTMLPHPFile('ActualizarPerfilMedico.php','container');">
                             <span class="icon"><i class="fas fa-address-card"></i></span>
                             <span class="title">Perfil</span>
                         </a>

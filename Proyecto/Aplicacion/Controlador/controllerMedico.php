@@ -42,7 +42,7 @@
 				$m->verMedico($id);
 			}else if($op=="del"){
 				$m->eliminarMedico($id);
-			}                        else if($op=="act"){
+			}else if($op=="act"){
 				$m->actualizarMedico($id);
 			}
 
