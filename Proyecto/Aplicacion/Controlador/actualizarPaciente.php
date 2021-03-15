@@ -26,9 +26,9 @@ $numero=$_POST['NUMERODIRECCION'];
 
 	if($con->query($sql)){
 		echo '<script language="javascript">alert("Se modificó correctamente");</script>';
-		echo '<script language="javascript">document.location="../php/ActualizarPerfilPaciente.php";</script>';
+		echo '<script language="javascript">document.location="../php/Paciente.php";</script>';
 	}else{
 		echo '<script language="javascript">alert("No se pudo modificar");</script>';
-		echo '<script language="javascript">document.location="../php/ActualizarPerfilPaciente.php";</script>';
+		echo '<script language="javascript">document.location="../php/Paciente.php";</script>';
     }	     
 ?>

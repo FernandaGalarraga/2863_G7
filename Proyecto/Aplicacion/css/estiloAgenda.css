@@ -1,90 +1,21 @@
 h2{
-    color:aliceblue;
+    color:darkslategray;
+    font-weight: bold;
 }
-* {
-    margin: 0;
-    padding: 0;
-}
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-a {
-    color: #666;
-    text-decoration: none;
-}
-a:hover {
-    color: #4FDA8C;
-}
-/* BODY */
-body {
-    position: relative;
-    color: #666;
-    font: 16px/26px "Raleway", sans-serif;
-    text-align: center;
-    height: 100%;
-    background: -moz-linear-gradient(270deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(34,46,64,1)), color-stop(100%, rgba(81,195,184,1)));
-    background: -webkit-linear-gradient(270deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
-    background: linear-gradient(180deg, rgba(34,46,64,1) 0%, rgba(81,195,184,1) 100%);
-    overflow:hidden;
-}
-.login {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-}
-.salir {
-    float:right;
-    position: absolute;
-    z-index: 2;
-    top: 2%;
-    left: 95%;
-    width: 40px;
-    height: 40px;
-    background: #4FC1B7;
-}
-.salir img {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 60%;
-}
-.logo {
-    float:left;
-    position: absolute;
-    z-index: 2;
-    top: 2%;
-    left: 3%;
-    width: 45px;
-    height: 40px;
-    background: #4FC1B7;
-}
-.logo img {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 90%;
-    height: 40px;
-}
-.logo a {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
+
 #filter{
-    width: 40%;
+    width: 20%;
     height: 40px;
     font-size: 18px;
+}
+h{
+    font-size: 16px;
+    text-align: center;
+    font-weight: 300;
+}
+#tabla{
+    background: rgb(238, 237, 237);
+}
+#head{
+    background: #80cbc4;
 }

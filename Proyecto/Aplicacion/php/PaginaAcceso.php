@@ -1,6 +1,7 @@
 <html>
 <head>
-  <link rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel='stylesheet' href='../css/estiloAcceso.css'>
 </head>
 <body>
 <?php
@@ -10,24 +11,23 @@ $hasta = 24;
 $hora_actual = intval(date("H"));
 if ($hora_actual >= $desde && $hora_actual < $hasta) {
 ?>
-    <div class="contenedor">
+    <div class="contenedor2">
       <div class="overlay" id="overlay">
         <div class="popup" id="popup">
-        <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-        <h1>Nueva Cita</h1>
+          <div class="title">
+            <br><h1>Nueva cita</h1>
+          </div>
         <hr>
               <div class="agenda"></div>
         </div>
         </div>
     </div>
-  <script type="text/javascript" src="../js/popup.js"></script>
 <?php
 } else {
 ?>
     <div class="contenedor">
       <div class="overlay" id="overlay">
         <div class="popup" id="popup">
-              <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
               <div class="date">
                 <span id="weekDay" class="weekDay"></span>, 
                 <span id="day" class="day"></span> de
@@ -39,13 +39,17 @@ if ($hora_actual >= $desde && $hora_actual < $hasta) {
                 <span id="minutes" class="minutes"></span> :
                 <span id="seconds" class="seconds"></span>
               </div><br><br>
-          <h>El agendamiento de citas es a partir</h>
-          <h>de las 8:00AM hasta 12:00PM</h>
+              <div class="texto">
+            <h>El agendamiento de citas empieza a partir</h><br>
+            <h>de las 8:00 AM hasta 12:00 PM</h>
+          </div>
+          <div class="img">
+            <img src="../img/doctores.png"/>
+          </div>
         </div>
         </div>
     </div>
   <script src="../js/reloj.js"></script>
-  <script type="text/javascript" src="../js/popup.js"></script>
 <?php
 }
 ?>

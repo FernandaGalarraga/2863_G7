@@ -1,0 +1,54 @@
+#p1, #p2, #p3, #p4, #p5, #p6, #p7, #p8{
+    color:#28A55F;
+    font-weight: bold;
+}
+.login{
+    background: rgb(225, 226, 226);
+    width: 50%;
+    margin: 0 auto;
+    height: 700px;
+    margin-top: 2%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+.titulo{
+    background: rgb(47, 139, 118);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    color:cornsilk;
+    font-weight: 700;
+}
+.formulario{
+    margin: 0 auto;
+    background: rgb(225, 226, 226);
+    height: 500px;
+    margin-top:1%;
+}
+.formulario .form-group{
+    margin-left: 11%;
+    text-align: center;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    width: 80%;
+}
+.formulario .form-group input{
+    height: 40px;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+#btn-reg{
+    width: 30%;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    background: rgb(53, 150, 121);
+    border: 1px rgb(53, 150, 121);
+}

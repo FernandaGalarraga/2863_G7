@@ -17,14 +17,14 @@ if(isset($_POST['re_pass'])){
             if($cn->query($sql1)){
                 echo '<script language="javascript">alert("Se modificó correctamente");</script>';
                 if($row["TIPOUSUARIO"]=="Paciente"){
-                    echo '<script language="javascript">document.location="../php/ActualizarPerfilPaciente.php";</script>';
+                    echo '<script language="javascript">document.location="../php/Paciente.php";</script>';
                 }else if($row["TIPOUSUARIO"]=="Medico"){
                     echo '<script language="javascript">document.location="controllerMedico.php?d=act/'.$id.'";</script>'; 
                 }
             }else{
                 echo '<script language="javascript">alert("No se pudo modificar");</script>';
                 if($row["TIPOUSUARIO"]=="Paciente"){
-                    echo '<script language="javascript">document.location="../php/ActualizarPerfilPaciente.php";</script>';
+                    echo '<script language="javascript">document.location="../php/Paciente.php";</script>';
                 }else if($row["TIPOUSUARIO"]=="Medico"){
                     echo '<script language="javascript">document.location="controllerMedico.php?d=act/'.$id.'";</script>'; 
                 }
@@ -32,7 +32,11 @@ if(isset($_POST['re_pass'])){
         }
     }else{
         echo '<script language="javascript">alert("Tu antigua contraseña es incorrecta");</script>';
-                echo '<script language="javascript">document.location="../php/ActualizarPerfilPaciente.php";</script>';
+            if($row["TIPOUSUARIO"]=="Paciente"){
+                echo '<script language="javascript">document.location="../php/Paciente.php";</script>';
+            }else if($row["TIPOUSUARIO"]=="Medico"){
+                echo '<script language="javascript">document.location="controllerMedico.php?d=act/'.$id.'";</script>'; 
+            }
     }
 }	     
 ?>

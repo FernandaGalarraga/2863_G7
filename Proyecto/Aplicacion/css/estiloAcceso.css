@@ -1,0 +1,66 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.date, .clock{
+    text-align: right;
+	margin-top: 2%;
+	color:#28A55F;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.texto{
+    font-size: 50px;
+    text-align: center;
+    margin-top: 1%;
+}
+.img{
+    text-align: center;
+}
+h1{
+    text-align: center;
+    margin-top: 4%;
+}
+.contenedor2{
+    background: rgb(184, 219, 211);
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 50px;
+    margin-top: 4%;
+}
+.form-group h5{
+    font-size: 18px;
+}
+.form-group{
+    width: 80%;
+    text-align: center;
+    margin-left: 12%;
+    
+}
+.form-group .form-control{
+    background: #e6f1eb;
+    color: rgb(17, 17, 17);
+    font-size: 20px;
+    height: 45px;
+}
+.icon{
+    height: 24%;
+}
+.contenedor2 .overlay .popup .title{
+background: rgb(31, 156, 150);
+border-top-left-radius: 50px ;
+border-top-right-radius: 50px ;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100px;
+color: cornsilk;
+font-weight: bold;
+}
+.contenedor2 .overlay .popup .agenda{
+    background: rgb(184, 219, 211);
+    border-bottom-left-radius: 50px ;
+    border-bottom-right-radius: 50px ;
+}

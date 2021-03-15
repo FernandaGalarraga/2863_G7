@@ -7,12 +7,8 @@
 <script type="text/javascript" src="../js/validarTelefono.js"></script>
 <script type="text/javascript" src="../js/validarPass.js"></script>
 <script type="text/javascript" src="../js/popup.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
 <link rel='stylesheet' href='../css/estiloacp.css'>
-<link rel='stylesheet' href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 <link rel='stylesheet' href='../css/estilos.css'>
 </head>
 <body>
@@ -27,19 +23,16 @@ $sql2="select * from paciente p, direccion d where p.codigousuario='$id'
 $res=$cn->query($sql2) or die($cn->error);
 while($row=$res->fetch_assoc()){
         $html='
-            <div class="container register">
+            <div class="register">
                     <div class="row">
                         <div class="col-md-3 register-left">
-                        <a href="Paciente.php"><input type="image" class="regresar" src="../img/salir.png"></a>
                             <img src="../img/user.png" alt=""/>
                             <div class="contenedor">
                                 <button class="btn-abrir-popup" id="btn-abrir-popup">Cambiar contraseña</button>
                             </div>
                         </div>
                         <div class="col-md-9 register-right">
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <h3 class="register-heading">Perfil</h3><br>
+                                    <h3 class="register-heading">Datos Personales</h3><br>
                                     <div class="register-form">
                                         <form action="../Controlador/actualizarPaciente.php" method="post" onsubmit="return formValidationActPaciente();" onclick="this.form.submit()">
                                                     </tr>
@@ -47,65 +40,63 @@ while($row=$res->fetch_assoc()){
                                                     <tr>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
-                                                            <label for="staticEmail">Nombre</label>
-                                                            <input type="text" class="form-control" id="nombrepaciente" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="1" required/>
-                                                            <p id="p1"></p>
+                                                            <label for="inputState">Nombre</label>
+                                                            <input type="text" class="text-center form-control" id="nombrepaciente" name="NOMBREPACIENTE" value="'.$row['NOMBREPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="1" required/>
+                                                            <h5 id="p1"></h5>
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                            <label for="staticEmail">Apellido Paterno</label>
-                                                            <input type="text" class="form-control" id="lastnamep" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" onchange="formValidationActPaciente()" tabindex="2" required/>
-                                                            <p id="p2"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="staticEmail">Apellido Materno</label>
-                                                            <input type="text" class="form-control" id="lastnamem" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" onchange="formValidationActPaciente()" tabindex="3" required/>
-                                                            <p id="p3"></p>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="staticEmail">Fecha de Nacimiento</label>
-                                                            <input type="date" class="form-control" id="date" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="4" required/>
-                                                            <p id="p4"></p>
+                                                            <label for="inputState">Apellido Paterno</label>
+                                                            <input type="text" class="text-center form-control" id="lastnamep" name="APELLIDOPATERNO" value="'.$row['APELLIDOPATERNO'].'" onchange="formValidationActPaciente()" tabindex="2" required/>
+                                                            <h5 id="p2"></h5><br><br>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
-                                                            <label for="staticEmail">Teléfono</label>
-                                                            <input type="text" name="TELEFONOPACIENTE" id="telephone" class="form-control" value="'.$row['TELEFONOPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="5" required/>
-                                                            <p id="p5"></p>
+                                                            <label for="inputState">Apellido Materno</label>
+                                                            <input type="text" class="text-center form-control" id="lastnamem" name="APELLIDOMATERNO" value="'.$row['APELLIDOMATERNO'].'" onchange="formValidationActPaciente()" tabindex="3" required/>
+                                                            <h5 id="p3"></h5>
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                            <label for="staticEmail">Género</label>
-                                                            <select class="form-control" name="GENEROPACIENTE">
-                                                            <option value="Femenino">Femenino</option>
-                                                            <option value="Masculino">Masculino</option>
-                                                            </select>
+                                                            <label for="inputState">Fecha de nacimiento</label>
+                                                            <input type="date" class="text-center form-control" id="date" name="FECHANACIMIENTOPACIENTE" value="'.$row['FECHANACIMIENTOPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="4" required/>
+                                                            <h5 id="p4"></h5><br><br>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
-                                                            <label for="staticEmail">Ciudad</label>
-                                                            <input type="text" class="form-control" id="ciudad" name="CIUDADDIRECCION" value="'.$row['CIUDADDIRECCION'].'" onchange="formValidationActPaciente()" tabindex="6" required/>
-                                                            <p id="p6"></p>
+                                                            <label for="inputState">Ciudad</label>
+                                                            <input type="text" class="text-center form-control" id="ciudad" name="CIUDADDIRECCION" value="'.$row['CIUDADDIRECCION'].'" onchange="formValidationActPaciente()" tabindex="6" required/>
+                                                            <h5 id="p6"></h5>
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                            <label for="staticEmail">Calle</label>
-                                                            <input type="text" class="form-control" name="CALLEDIRECCION" value="'.$row['CALLEDIRECCION'].'" tabindex="7" required/>
-                                                            </select>
+                                                            <label for="inputState">Calle</label>
+                                                            <input type="text" class="text-center form-control" name="CALLEDIRECCION" value="'.$row['CALLEDIRECCION'].'" tabindex="7" required/>
+                                                            </select><br><br>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
-                                                            <label for="staticEmail">Número</label>
-                                                            <input type="text" class="form-control" name="NUMERODIRECCION" value="'.$row['NUMERODIRECCION'].'" tabindex="8" required/>
-                                                            </select>
+                                                            <label for="inputState">Número</label>
+                                                            <input type="text" class="text-center form-control" name="NUMERODIRECCION" value="'.$row['NUMERODIRECCION'].'" tabindex="8" required/>
+                                                            </select><br><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputState">Teléfono</label>
+                                                            <input type="text" name="TELEFONOPACIENTE" id="telephone" class="text-center form-control" value="'.$row['TELEFONOPACIENTE'].'" onchange="formValidationActPaciente()" tabindex="5" required/>
+                                                            <h5 id="p5"></h5>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="inputState">Género</label>
+                                                            <select class="text-center form-control" name="GENEROPACIENTE">
+                                                                <option value="'.$row['GENEROPACIENTE'].'">'.$row['GENEROPACIENTE'].'</option>
+                                                                <option value="Masculino">'.!$row['GENEROPACIENTE'].'</option>
+                                                            </select><br>
                                                         </div>
                                                     </div>
                                                 <input type="submit" class="btnRegister" link  value="Actualizar"/>
                                         </form>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -131,7 +122,9 @@ while($row=$res->fetch_assoc()){
                                 <input id="cpassword" name="cpassword" type="password" placeholder="Confirmar contraseña" onchange="formValidationPassword()" tabindex="11" required>
                                 <p id="p7"></p>
                             </div>
+                            <center>
                             <input type="submit" name="re_pass" class="btn-submit" value="Guardar">
+                            </center>
                         </form>
                     </div>
                 </div>

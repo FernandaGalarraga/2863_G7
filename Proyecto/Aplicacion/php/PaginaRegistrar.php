@@ -1,7 +1,7 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 <!DOCTYPE html>
 <head>
 <meta charset='UTF-8'><meta name="robots" content="noindex">
@@ -18,10 +18,8 @@
 <link rel='stylesheet' href='../css/estilo.css'>
 </head>
 <body>
-        <!-- LOGIN MODULE -->
         <div class="login">
             <div class="wrap">
-                <!-- TOGGLE -->
                 <div id="toggle-wrap">
                     <div id="toggle-terms">
                         <div id="cross">
@@ -30,13 +28,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- SLIDER -->
                 <div class="content">
-                    <!-- LOGO -->
                     <div class="logo">
                         <a href="#"><img class="logoim" src="../img/logo.png" alt=""></a>
                     </div>
-                    <!-- SLIDESHOW -->
                     <div id="slideshow">
                         <div class="three">
                         
@@ -52,7 +47,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- LOGIN FORM -->
                 <div class="user">
                     <div class="form-wrap">
                     <a href="../index.php"><input type="image" class="regresar" src="../img/salir.png"></a>

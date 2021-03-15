@@ -14,7 +14,9 @@ require_once "../modelo/Conexion.php";
 session_start();
 $cn=conectar();
 $id=$_SESSION['codigo'];
+date_default_timezone_set("America/Guayaquil");
 $date = date('Y-m-d');
+$hora = date('H:i:s');
 $sql="SELECT c.codigocitamedica, concat_ws(' ', m.NOMBREMEDICO, m.APELLIDOMEDICO) as 'Medico', c.tipoconsulta, c.fechaconsulta, c.horaconsulta 
       FROM citamedica c 
       INNER JOIN medico m 
@@ -23,29 +25,27 @@ $sql="SELECT c.codigocitamedica, concat_ws(' ', m.NOMBREMEDICO, m.APELLIDOMEDICO
       ON c.CODIGOUSUARIO=p.CODIGOUSUARIO
       WHERE p.CODIGOUSUARIO='$id'
       AND c.fechaconsulta='$date'
-	  order by c.fechaconsulta desc";
+      AND c.horaconsulta>'$hora'
+	    order by c.fechaconsulta desc";
 $res=$cn->query($sql) or die($con->error);
 ?>
 <div class="login">
-  <div class="logo">
-   <a href="#"><img class="logoim" src="../img/logo.png" alt=""></a>
+<h2 class="text-center">CITAS MÉDICAS</h2><br>
+  <div class="col-md-6">  
+    <h>Fecha inicio:</h>
+   <input type="date" name="from_date" id="from_date" class="text-center form-control" placeholder="Fecha inicio" />  
+  </div>  
+  <div class="col-md-6"> 
+    <h>Fecha fin:</h>
+   <input type="date" name="to_date" id="to_date" class="text-center form-control" placeholder="Fecha final" />  
   </div>
-  <div class="salir">
-   <a href="Paciente.php"><img class="logoim" src="../img/salir.png" alt=""></a>
-  </div><br><br>
-  <h2 class="text-center">CITAS MÉDICAS</h2><br>
-  <div class="col-md-3">  
-   <input type="text" name="from_date" id="from_date" class="form-control" placeholder="Fecha inicio" />  
-  </div>  
-  <div class="col-md-3">  
-   <input type="text" name="to_date" id="to_date" class="form-control" placeholder="Fecha final" />  
-  </div>  
-  <div class="col-md-5">  
+  <br><br><br><br>
+  <div class="col-md-8">  
    <input type="button" name="filter" id="filter" value="BUSCAR" class="btn btn-success" />  
   </div>
   <div style="clear:both"></div><br />  
      <div id="order_table">  
-        <table class="table table-striped" border="1" align="center">  
+        <table class="table table-striped" id="cita" align="center">  
          <tr class="table-info">  
            <th width="5%" class="text-center">ID</th>  
            <th width="20%" class="text-center">Médico</th>  
