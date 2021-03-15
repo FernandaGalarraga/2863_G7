@@ -1,11 +1,4 @@
 $(document).ready(function(){  
-    $.datepicker.setDefaults({  
-         dateFormat: 'yy-mm-dd'   
-    });  
-    $(function(){  
-         $("#from_date").datepicker();  
-         $("#to_date").datepicker();  
-    });  
     $('#filter').click(function(){  
          var from_date = $('#from_date').val();  
          var to_date = $('#to_date').val();  

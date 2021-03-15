@@ -4,7 +4,9 @@
 <?php  
 require_once "../modelo/Conexion.php"; 
 session_start();
+date_default_timezone_set("America/Guayaquil");
 $date = date('Y-m-d');
+$hora = date('H:i:s');
 $id=$_SESSION['codigo'];
  if(isset($_POST["from_date"], $_POST["to_date"]))  
  {  
@@ -43,7 +45,7 @@ $id=$_SESSION['codigo'];
                           <td class="text-center success">'. $row["tipoconsulta"] .'</td>  
                           <td class="text-center success">'. $row["fechaconsulta"] .'</td>  
                           <td class="text-center success">'. $row["horaconsulta"] .'</td>';
-                         if($row['fechaconsulta']<$date){
+                          if($row['fechaconsulta']<=$date && $row['horaconsulta']<=$hora){
                          $output.='<td class="text-center success">
                               
                          </td>
@@ -65,9 +67,7 @@ $id=$_SESSION['codigo'];
       else  
       {  
            $output .= '  
-                <tr>  
-                     <td class="texto1" colspan="5">No hay citas médicas agendadas</td>  
-                </tr>  
+           <p id="texto1" class="text-center" colspan="5">No hay citas médicas agendadas en esta fecha</p>  
            ';  
       }  
       $output .= '</table>';  
