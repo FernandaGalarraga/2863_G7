@@ -2,14 +2,14 @@
 <head>
 <meta charset='UTF-8'><meta name="robots" content="noindex">
 <script type="text/javascript" src="../js/validaciones.js"></script>
+        <script type="text/javascript" src="../js/validaciones.js"></script>
         <script type="text/javascript" src="../js/validarFecha.js"></script>
         <script type="text/javascript" src="../js/validarLetras.js"></script>
         <script type="text/javascript" src="../js/validarTelefono.js"></script>
         <script type="text/javascript" src="../js/validarPass.js"></script>
         <script type="text/javascript" src="../js/validarHora.js"></script>
-        <script type="text/javascript" src="../js/popup.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-<link rel='stylesheet' href='../css/estiloacp.css'>
+<link rel='stylesheet' href='../css/estiloac.css'>
 <link rel='stylesheet' href='../css/estilos.css'>
 </head>
 <body>
@@ -30,11 +30,11 @@ while($row=$res->fetch_assoc()){
                         <div class="col-md-3 register-left">
                             <img src="../img/user.png" alt=""/>
                             <div class="contenedor">
-                                <button class="btn-abrir-popup" id="btn-abrir-popup">CambiarContraseña</button>
+                                <button class="btn-abrir-popup" id="btn-abrir-popup">Cambiar contraseña</button>
                             </div>
                         </div>
                         <div class="col-md-9 register-right">
-                                    <h3 class="register-heading">Datos Personales</h3><br>
+                                    <h3 class="register-heading">Datos Personales</h3><br><br><br>
                                     <div class="register-form">
                                         <form name="medico" action="../Controlador/actualizarMedico.php" method="post" onsubmit="return formValidationActMedico();" onclick="this.form.submit()">
                                                     </tr>
@@ -69,10 +69,10 @@ while($row=$res->fetch_assoc()){
                                                         <div class="form-group col-md-6">
                                                             <label for="inputState">Hora Fin</label>
                                                             <input type="time" class="text-center form-control" id="hfinal" name="HORAFINMEDICO" value="'.$row['horafin'].'" tabindex="5" onchange="formValidationActMedico()" required/>
-                                                            <p id="p5"></p>
+                                                            <p id="p5"></p><br><br>
                                                         </div>
-                                                    </div>
-                                                  
+                                                    </div> 
+                                                 
                                                 <input type="submit" class="btnRegister" link  value="Actualizar"/>
                                         </form>
                             </div>

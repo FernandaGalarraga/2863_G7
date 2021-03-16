@@ -77,6 +77,23 @@ class Medico extends Usuario{
       }
       return $usuario;
     }
+    public function detalleMedico($idMedico){
+        $sql = "select * from medico m, horarioatencion h where m.codigousuario='$idMedico'
+                and m.codigousuario=h.codigousuario";
+        $res=$this->con->query($sql) or die($this->con->error);
+        $detalleM=array();
+        while($row=$res->fetch_assoc()){
+            $detM=new Medico();
+            $detM->CODIGO_USUARIO=$row['CODIGOUSUARIO'];
+            $detM->NOMBRE_MEDICO=$row['NOMBREMEDICO'];
+            $detM->APELLIDO_MEDICO=$row['APELLIDOMEDICO'];
+            $detM->ESPECIALIDAD_MEDICO=$row['ESPECIALIDADMEDICO'];
+            $detM->HORA_INICIO=$row['HORAINICIO'];
+            $detM->HORA_FIN=$row['HORAFIN'];
+            array_push($detalleM, $detM);
+        }
+        return $detalleM;
+    }
     public function verMedico($id){
       $sql="SELECT m.codigousuario,m.nombremedico,m.apellidomedico,m.especialidadmedico,
       h.horainicio,h.horafin 

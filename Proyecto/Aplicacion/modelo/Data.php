@@ -60,5 +60,21 @@
                 echo '<script language="javascript">document.location="../php/ListarPaciente.php";</script>';
             }	
         }
+        public function listarMedico(){
+            $usuario=array();
+            $sql="select * from medico m";
+            $res=$this->con->query($sql) or die($this->con->error);
+            while($row=$res->fetch_assoc()){
+                $paciente= new Paciente();
+                $paciente->CODIGO_PACIENTE=$row['CODIGOUSUARIO'];
+                $paciente->NOMBRE_PACIENTE=$row['NOMBREPACIENTE'];
+                $paciente->APELLIDO_PATERNO=$row['APELLIDOPATERNO'];
+                $paciente->APELLIDO_MATERNO=$row['APELLIDOMATERNO'];
+                $paciente->TELEFONO_PACIENTE=$row['TELEFONOPACIENTE'];
+                $paciente->CODIGO_DIRECCION=$row['CODIGODIRECCION'];
+                array_push($usuario, $paciente);
+            }
+            return $usuario;
+        }
     }
 ?>

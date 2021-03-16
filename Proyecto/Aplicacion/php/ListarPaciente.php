@@ -43,7 +43,7 @@ $html='
                          <input type="button" name="view" value="Detalle" id='.$pa->CODIGO_PACIENTE.' class="btn btn-success view_data" />
                          </td>
                          <td class="text-center" id="tabla">
-                             <a class="btn btn-danger" href="../Controlador/eliminarPaciente.php?id='.$pa->CODIGO_DIRECCION.'">Eliminar</a>
+                             <a class="btn btn-danger" href="#">Eliminar</a>
                          </td>';
                      }else{
                          $html.='
@@ -66,8 +66,7 @@ $html='
 <div id="dataModal" class="modal fade">  
       <div class="modal-dialog">  
            <div class="modal-content">  
-                <div class="modal-header">  
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                <div class="modal-header">   
                      <h4 class="modal-title">Paciente</h4>  
                 </div>  
                 <div class="modal-body" id="employee_detail">  
