@@ -134,14 +134,13 @@ $(document).ready(function(){
        <center> <h5 id="horaActualCitaM">'.$HORACONSULTA.'</h5></center>
           
       </div>
-      
         <div class="form-group col-md-6">
         <h5>Nueva Hora</h5> 
           <select class="text-center form-control form-control-lg" name="cbx_horaMedico2" id="cbx_horaMedico2"></select>
         </div>
   </div><br>
     <center>
-  <input type="submit" class="btnAgendamiento" link  value="Editar"/>
+  <input type="submit" class="btn btn-success" link  value="Editar"/>
   </center>
 </form>';
 

@@ -7,7 +7,7 @@ require_once "../modelo/Conexion.php";
     $date=$_POST['FECHACONSULTA'];
     $hora=$_POST['cbx_horaMedico'];
     $tipo=$_POST['TIPOCONSULTA'];
-    $sql="insert into citamedica values (null, '$idMedico', '$id', '$tipo', '$date', '$hora');";
+    $sql="insert into citamedica values (null, '$idMedico', '$id', '$tipo', '$date', '$hora',null);";
     $res=$con->query($sql) or die($con->error);
     if($res){
         echo '<script language="javascript">alert("Su cita fue agendada con éxito");</script>';

@@ -89,7 +89,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#container" onclick="">
+                        <a href="#container" onclick="includeHTMLPHPFile('ListarCitasMedico.php','container');">
                             <span class="icon"><i class="fas fa-notes-medical"></i></span>
                             <span class="title">Ver citas</span>
                         </a>

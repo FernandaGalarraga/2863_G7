@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  
 <link rel='stylesheet' href='../css/estiloAgenda.css'> 
-<script type="text/javascript" src="../js/fechaAgenda.js"></script>
+<script type="text/javascript" src="../js/fechaAgendaMedico.js"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -22,16 +22,16 @@ $id=$_SESSION['codigo'];
 date_default_timezone_set("America/Guayaquil");
 $date = date('Y-m-d');
 $hora = date('H:i:s');
-$sql="SELECT c.codigocitamedica, concat_ws(' ', m.NOMBREMEDICO, m.APELLIDOMEDICO) as 'Medico', c.tipoconsulta, c.fechaconsulta, c.horaconsulta 
+$sql="SELECT c.codigocitamedica, concat_ws(' ', p.NOMBREPACIENTE, p.APELLIDOPATERNO) as 'Paciente', c.tipoconsulta, c.fechaconsulta, c.horaconsulta 
       FROM citamedica c 
-      INNER JOIN medico m 
-      ON c.MED_CODIGOUSUARIO=m.CODIGOUSUARIO
-      INNER JOIN paciente p
+      INNER JOIN paciente p 
       ON c.CODIGOUSUARIO=p.CODIGOUSUARIO
-      WHERE p.CODIGOUSUARIO='$id'
+      INNER JOIN medico m
+      ON c.MED_CODIGOUSUARIO=m.CODIGOUSUARIO
+      WHERE m.CODIGOUSUARIO='$id'
       AND c.fechaconsulta='$date'
-      AND c.horaconsulta>'$hora'
-	    order by c.fechaconsulta desc";
+      AND c.horaconsulta>='$hora'
+	  order by c.fechaconsulta desc";
 $res=$cn->query($sql) or die($con->error);
 ?>
 <div class="login">
@@ -52,12 +52,12 @@ $res=$cn->query($sql) or die($con->error);
      <div id="order_table">  
         <table class="table table-striped" id="cita" align="center">  
          <tr class="table-info">  
-           <th width="5%" class="text-center">ID</th>  
-           <th width="20%" class="text-center">Médico</th>  
+           <th width="5%" class="text-center">Id</th>  
+           <th width="20%" class="text-center">Paciente</th>  
            <th width="20%" class="text-center">Consulta</th>  
            <th width="15%" class="text-center">Fecha</th>  
            <th width="12%" class="text-center">Hora</th>  
-           <th width="20%" class="text-center" colspan='2'>Acción</th>
+           <th width="20%" class="text-center" colspan='1'>Acción</th>
          </tr>  
          <?php  
            while($row = mysqli_fetch_array($res))  
@@ -65,17 +65,14 @@ $res=$cn->query($sql) or die($con->error);
            ?>  
            <tr>  
              <td class="text-center success"><?php echo $row["codigocitamedica"]; ?></td>  
-             <td class="text-center success"><?php echo $row["Medico"]; ?></td>  
+             <td class="text-center success"><?php echo $row["Paciente"]; ?></td>  
              <td class="text-center success"><?php echo $row["tipoconsulta"]; ?></td>  
              <td class="text-center success"><?php echo $row["fechaconsulta"]; ?></td>  
              <td class="text-center success"><?php echo $row["horaconsulta"]; ?></td>
              <?php
 			
              $html='<td class="text-center success">
-             <input type="button" name="view" value="Actualizar" id='.$row["codigocitamedica"].' class="btn btn-success view_data" />
-              </td>
-              <td class="text-center success">
-                <a class="btn btn-danger" href="#">Cancelar cita</a>
+             <input type="button" name="view" value="Estado" id='.$row["codigocitamedica"].' class="btn btn-info view_data" />
               </td>';
               echo $html; 			 
              ?>		 
@@ -91,16 +88,16 @@ $res=$cn->query($sql) or die($con->error);
 <div id="dataModal" class="modal fade">  
       <div class="modal-dialog">  
            <div class="modal-content">  
-               <div class="modal-header">  
+                <div class="modal-header">  
                      <button type="button" class="close" data-dismiss="modal">&times;</button>  
                 </div> 
                 <div class="modal-header">   
-                     <h4 class="modal-title">Cita Medica</h4>  
+                     <h4 class="modal-title">Estado Cita Medica</h4>  
                 </div>  
                 <div class="modal-body" id="editarCitaMedica">  
                 </div>  
                 <div class="modal-footer">  
-                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>  
+                     <button type="button" class="btn btn-succe" data-dismiss="modal">Cancelar</button>  
                 </div>  
            </div>  
       </div>  
@@ -113,7 +110,7 @@ $res=$cn->query($sql) or die($con->error);
            if(employee_id != '')  
            {  
                 $.ajax({  
-                     url:"../Controlador/editarCita.php",  
+                     url:"estadoCitaMedica.php",  
                      method:"POST",  
                      data:{cita_id:employee_id},  
                      success:function(data){  

@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <head>
+<title>Registrar paciente</title>
 <meta charset='UTF-8'><meta name="robots" content="noindex">
 <script type="text/javascript" src="../js/validaciones.js"></script>
 <script type="text/javascript" src="../js/validarFecha.js"></script>
