@@ -78,8 +78,7 @@ $res=$cn->query($sql) or die($con->error);
                 <a class="btn btn-danger" href="#">Cancelar cita</a>
               </td>';
               echo $html; 			 
-             ?>
-			 
+             ?>		 
            </tr>  
            <?php  
            }  
