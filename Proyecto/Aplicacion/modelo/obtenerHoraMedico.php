@@ -6,6 +6,10 @@ require_once "Conexion.php";
 
 	$id_medico = $_POST['CODIGOUSUARIO'];
     $fecha=$_POST['FECHACONSULTA'];
+    if(isset($_POST["HORACITAACTUAL"]))  
+    {  
+        $horaCitaActual=$_POST["HORACITAACTUAL"];
+    }
     $cn=conectar();  
     $horasDisponibles=array();
     $sql="SELECT * FROM `horarioatencion` WHERE CODIGOUSUARIO= '$id_medico'";
@@ -67,10 +71,11 @@ require_once "Conexion.php";
 	}
     $html= "<option value=''>Horas disponibles</option>";
 
-    foreach($horasDisponibles as $hora){
-        $html.= "<option value='".$hora."'>".$hora."</option>";
-    }   
-    echo $html;
+    
+        foreach($horasDisponibles as $hora){
+            $html.= "<option value='".$hora."'>".$hora."</option>";
+        }
+      echo $html;
 
 ?>
 

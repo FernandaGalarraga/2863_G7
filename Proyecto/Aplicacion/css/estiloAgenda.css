@@ -19,3 +19,6 @@ h{
 #head{
     background: #80cbc4;
 }
+#dataModal h5{
+    font-weight: bold;
+}

@@ -2,12 +2,17 @@
 <head>
 <meta charset='UTF-8'><meta name="robots">
 <title>Citas medicas</title>  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
+ 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>  
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  
-<link rel='stylesheet' href='../css/estiloAgenda.css'>
+<link rel='stylesheet' href='../css/estiloAgenda.css'> 
+<script type="text/javascript" src="../js/fechaAgenda.js"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
+
 <body>
 <?php
 require_once "../modelo/Conexion.php";
@@ -67,13 +72,12 @@ $res=$cn->query($sql) or die($con->error);
              <?php
 			
              $html='<td class="text-center success">
-                <a class="btn btn-success" href="#">Actualizar</a>
+             <input type="button" name="view" value="Actualizar" id='.$row["codigocitamedica"].' class="btn btn-success view_data" />
               </td>
               <td class="text-center success">
                 <a class="btn btn-danger" href="#">Cancelar cita</a>
               </td>';
-              echo $html; 
-			 
+              echo $html; 			 
              ?>
 			 
            </tr>  
@@ -84,6 +88,42 @@ $res=$cn->query($sql) or die($con->error);
      </div>  
    </div>
 </div>
-<script type="text/javascript" src="../js/fechaAgenda.js"></script>
+
+<div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">   
+                     <h4 class="modal-title">Cita Medica</h4>  
+                </div>  
+                <div class="modal-body" id="editarCitaMedica">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>
+ <script>
+ 
+ $(document).ready(function(){
+  $(".view_data").click(function(){
+    var employee_id = $(this).attr("id");  
+           if(employee_id != '')  
+           {  
+                $.ajax({  
+                     url:"../Controlador/editarCita.php",  
+                     method:"POST",  
+                     data:{cita_id:employee_id},  
+                     success:function(data){  
+                          $('#editarCitaMedica').html(data);  
+                          $('#dataModal').modal('show');  
+                     }  
+                });  
+           } 
+  });
+});
+
+ </script>
+
 </body>
 </html>

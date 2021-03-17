@@ -5,8 +5,11 @@
 require_once "../modelo/Conexion.php"; 
 session_start();
 date_default_timezone_set("America/Guayaquil");
-$date = date('Y-m-d');
+
+/*$date = date('Y-m-d');
 $hora = date('H:i:s');
+*/
+$diahoraActual=date('Y-m-d H:i:s');
 $id=$_SESSION['codigo'];
  if(isset($_POST["from_date"], $_POST["to_date"]))  
  {  
@@ -45,12 +48,12 @@ $id=$_SESSION['codigo'];
                           <td class="text-center success">'. $row["tipoconsulta"] .'</td>  
                           <td class="text-center success">'. $row["fechaconsulta"] .'</td>  
                           <td class="text-center success">'. $row["horaconsulta"] .'</td>';
-                          if($row['fechaconsulta']<=$date && $row['horaconsulta']<=$hora){
-                         $output.='<td class="text-center success">
-                              
+
+                    $diaHoraCita=$row["fechaconsulta"].' '.$row["horaconsulta"];
+                    if($diaHoraCita<=$diahoraActual){
+                         $output.='<td class="text-center success">                             
                          </td>
-                         <td class="text-center success">
-                              
+                         <td class="text-center success">                             
                          </td>';
                          }else{
                          $output.='<td class="text-center success">
