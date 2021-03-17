@@ -1,0 +1,24 @@
+<?php 
+require_once "Conexion.php";
+$cn=conectar();
+$CODIGOUSUARIO=$_POST['CODIGOUSUARIO'];
+$MED_CODIGO=$_POST['codigousuario'];
+$TIPOCONSULTA=$_POST['TIPOCONSULTA'];
+$FECHACONSULTA=$_POST['FECHACONSULTA'];
+$HORACONSULTA=$_POST['cbx_horaMedico2'];
+$CODIGOCITA=$_POST['CODIGOCITAMEDICAM'];
+
+$sql="UPDATE `citamedica` 
+SET `MED_CODIGOUSUARIO` = '$MED_CODIGO', 
+`CODIGOUSUARIO` = '$CODIGOUSUARIO',
+`TIPOCONSULTA` = '$TIPOCONSULTA',
+`FECHACONSULTA` = '$FECHACONSULTA',
+`HORACONSULTA` = '$HORACONSULTA'
+WHERE `citamedica`.`CODIGOCITAMEDICA` = '$CODIGOCITA'";
+if($cn->query($sql)){
+    echo 'ok';
+}else{
+    echo 'nook';
+}
+ 
+?>

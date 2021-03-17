@@ -41,10 +41,27 @@ if(isset($_POST["cita_id"]))
 $html='
 
 <script>
+function enviar_ajax(){	
+
+	$.ajax({
+	type: "POST",
+	url: "../modelo/editarCitaModel.php",
+	data: $("#formAgendar2").serialize(),
+	success: function(respuesta) {
+		if(respuesta=="ok"){
+		alert("enviado");
+		}
+		else {
+		alert(respuesta);
+		}
+	}
+	});
+}
+
+
 $(document).ready(function(){
   $("#cbx_Medico2").change(function () {
    $("#fechaConsulta").val("");
-
   })
 });
 
@@ -80,9 +97,6 @@ $(document).ready(function(){
       });            
     });
   });
-
-
-
 });
 
 
@@ -91,9 +105,10 @@ $(document).ready(function(){
 
 </script>
 
-<form action="../Controlador/agendarCita.php" method="post" onsubmit="return formValidationAgenda();" onclick="this.form.submit()" id="formAgendar2">
+<form action="#" method="post" onsubmit="enviar_ajax();return false;return formValidationAgenda(); " onclick="this.form.submit()" id="formAgendar2">
   </tr>
-    <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$id.'" required>
+    <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$CODIGOUSUARIO.'" required>
+    <input type="hidden" id="codigocitamedica" name="CODIGOCITAMEDICAM" value="'.$id.'" required>
     <input type="hidden" id="HORACITAACTUAL" name="HORACITAACTUAL" value="'.$HORACONSULTA.'" required>
     <input type="hidden" id="FECHACITAACTUAL" name="HORACITAACTUAL" value="'.$FECHACONSULTA.'" required>
   <tr>
@@ -134,13 +149,14 @@ $(document).ready(function(){
        <center> <h5 id="horaActualCitaM">'.$HORACONSULTA.'</h5></center>
           
       </div>
+      
         <div class="form-group col-md-6">
         <h5>Nueva Hora</h5> 
           <select class="text-center form-control form-control-lg" name="cbx_horaMedico2" id="cbx_horaMedico2"></select>
         </div>
   </div><br>
     <center>
-  <input type="submit" class="btn btn-success" link  value="Editar"/>
+  <input type="submit" class="btnAgendamiento" link  value="Editar"/>
   </center>
 </form>';
 

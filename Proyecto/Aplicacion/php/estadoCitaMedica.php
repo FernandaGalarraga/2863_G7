@@ -14,7 +14,7 @@ if(isset($_POST["cita_id"]))
         WHERE c.CODIGOCITAMEDICA='.$id.'";
   $res = $con->query($sql);
   while($row = $res->fetch_assoc()){
-      $CODIGOCITAMEDICA=$row['CODIGOCITAMEDICA'];
+      $CODIGOCITAMEDICA=$row['codigocitamedica'];
       $CODIGOPACIENTE=$row['codigousuario'];
       $CODIGOMEDICO=$row['med_codigousuario'];
       $NOMBRE_PACIENTE=$row['Paciente'];
