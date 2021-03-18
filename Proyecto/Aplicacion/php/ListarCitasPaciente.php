@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  
 <link rel='stylesheet' href='../css/estiloAgenda.css'> 
 <script type="text/javascript" src="../js/fechaAgenda.js"></script>
+<link rel='stylesheet' href='../css/estiloag.css'>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -105,16 +106,16 @@ $res=$cn->query($sql) or die($con->error);
            </div>  
       </div>  
  </div>
- <p id="MensajeCancelar"></p>
+ 
  <script>
  function alerta()
     {
     var mensaje;
     var opcion = confirm("¿Estas Seguro que quieres cancelar la cita?");
     if (opcion == true) {
-        mensaje = "Has clickado OK";
+       
 	} else {
-	    mensaje = "Has clickado Cancelar";
+	    
 	}
 	document.getElementById("ejemplo").innerHTML = mensaje;
 }

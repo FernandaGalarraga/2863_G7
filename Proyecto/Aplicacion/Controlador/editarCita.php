@@ -1,3 +1,7 @@
+<head>
+<script type="text/javascript" src="../js/validarFechaAgenda.js"></script>
+<script type="text/javascript" src="../js/validaciones.js"></script>
+</head>
 <?php
 if(isset($_POST["cita_id"]))  
 {  
@@ -43,6 +47,7 @@ $html='
 <script>
 function enviar_ajax(){	
 
+  if(formValidationAgenda()){
 	$.ajax({
 	type: "POST",
 	url: "../modelo/editarCitaModel.php",
@@ -57,6 +62,7 @@ function enviar_ajax(){
 		}
 	}
 	});
+  }
 }
 
 
@@ -114,7 +120,8 @@ $(document).ready(function(){
 
 </script>
 
-<form action="#" method="post" onsubmit="enviar_ajax();return false;return formValidationAgenda(); " onclick="this.form.submit()" id="formAgendar2">
+
+<form action="#" method="post" onsubmit="enviar_ajax();return false;" onclick="this.form.submit()" id="formAgendar2">
   </tr>
     <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$CODIGOUSUARIO.'" required>
     <input type="hidden" id="codigocitamedica" name="CODIGOCITAMEDICAM" value="'.$id.'" required>
@@ -165,7 +172,7 @@ $(document).ready(function(){
         </div>
   </div><br>
     <center>
-  <input type="submit" class="btn btn-success" link  value="Guardar Cambios"/>
+  <input type="submit" id="#EditarCitaBtn" class="btn btn-success" link  value="Guardar Cambios"/>
   </center>
 </form>';
 
