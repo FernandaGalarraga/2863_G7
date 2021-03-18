@@ -49,10 +49,11 @@ function enviar_ajax(){
 	data: $("#formAgendar2").serialize(),
 	success: function(respuesta) {
 		if(respuesta=="ok"){
-		alert("enviado");
-		}
+		alert("Cita Editada Correctamente");
+    location.reload();
+  		}
 		else {
-		alert(respuesta);
+		alert("Error al Editar la Cita");
 		}
 	}
 	});
@@ -72,6 +73,12 @@ $(document).ready(function(){
   const $fechaCitaActual=$("#FECHACITAACTUAL");
 
 
+  $("#cbx_Medico2").change(function () {
+    var horaActual=document.getElementById("horaActualCitaM");
+    horaActual.innerHTML="";
+
+  });
+  
   $("#fechaConsulta").change(function () {
     var horaActual=document.getElementById("horaActualCitaM");
     if($fechaConsulta.val()!=$fechaCitaActual.val()){   
@@ -88,9 +95,11 @@ $(document).ready(function(){
     });
   });
 
+
+
   $("#formAgendar2").ready(function () {
-    
     $("#cbx_Medico2 option:selected").each(function () {
+      
       CODIGOUSUARIO = $(this).val();
       $.post("../modelo/obtenerHoraMedico.php", { CODIGOUSUARIO: CODIGOUSUARIO,FECHACONSULTA: $fechaConsulta.val(),HORACITAACTUAL:$horaCitaActual.val()}, function(data){
         $("#cbx_horaMedico2").html(data);
@@ -110,7 +119,7 @@ $(document).ready(function(){
     <input type="hidden" id="titulo" name="CODIGOUSUARIO" value="'.$CODIGOUSUARIO.'" required>
     <input type="hidden" id="codigocitamedica" name="CODIGOCITAMEDICAM" value="'.$id.'" required>
     <input type="hidden" id="HORACITAACTUAL" name="HORACITAACTUAL" value="'.$HORACONSULTA.'" required>
-    <input type="hidden" id="FECHACITAACTUAL" name="HORACITAACTUAL" value="'.$FECHACONSULTA.'" required>
+    <input type="hidden" id="FECHACITAACTUAL" name="FECHACITAACTUAL" value="'.$FECHACONSULTA.'" required>
   <tr>
   <div class="form-row">
         <div class="form-group col-md-6">
@@ -156,7 +165,7 @@ $(document).ready(function(){
         </div>
   </div><br>
     <center>
-  <input type="submit" class="btnAgendamiento" link  value="Editar"/>
+  <input type="submit" class="btn btn-success" link  value="Guardar Cambios"/>
   </center>
 </form>';
 

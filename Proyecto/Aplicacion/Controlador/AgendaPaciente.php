@@ -52,7 +52,7 @@ $id=$_SESSION['codigo'];
                          </td>';
                          }else{
                          $output.='<td class="text-center success">
-                              <a class="btn btn-success" href="#">Actualizar</a>
+                         <input type="button" name="view" value="Actualizar" id='.$row["codigocitamedica"].' class="btn btn-success view_data" />
                          </td>
                          <td class="text-center success">
                               <a class="btn btn-danger" href="#">Cancelar cita</a>
@@ -69,6 +69,47 @@ $id=$_SESSION['codigo'];
            ';  
       }  
       $output .= '</table>';  
+      $output.='
+      <div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+               <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                </div> 
+                <div class="modal-header">   
+                     <h4 class="modal-title">Cita Medica</h4>  
+                </div>  
+                <div class="modal-body" id="editarCitaMedica">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>
+ <script>
+ 
+ $(document).ready(function(){
+  $(".view_data").click(function(){
+    var employee_id = $(this).attr("id");  
+           if(employee_id != "")  
+           {  
+                $.ajax({  
+                     url:"../Controlador/editarCita.php",  
+                     method:"POST",  
+                     data:{cita_id:employee_id},  
+                     success:function(data){  
+                          $("#editarCitaMedica").html(data);  
+                          $("#dataModal").modal("show");  
+                     }  
+                });  
+           } 
+  });
+});
+ </script>';
+
+
       echo $output;  
  }  
  ?>
+

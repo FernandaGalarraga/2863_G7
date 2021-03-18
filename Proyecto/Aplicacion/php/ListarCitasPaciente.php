@@ -75,7 +75,7 @@ $res=$cn->query($sql) or die($con->error);
              <input type="button" name="view" value="Actualizar" id='.$row["codigocitamedica"].' class="btn btn-success view_data" />
               </td>
               <td class="text-center success">
-                <a class="btn btn-danger" href="#">Cancelar cita</a>
+              <button onclick="alerta()">Cancelar Cita</button
               </td>';
               echo $html; 			 
              ?>		 
@@ -105,8 +105,19 @@ $res=$cn->query($sql) or die($con->error);
            </div>  
       </div>  
  </div>
+ <p id="MensajeCancelar"></p>
  <script>
- 
+ function alerta()
+    {
+    var mensaje;
+    var opcion = confirm("¿Estas Seguro que quieres cancelar la cita?");
+    if (opcion == true) {
+        mensaje = "Has clickado OK";
+	} else {
+	    mensaje = "Has clickado Cancelar";
+	}
+	document.getElementById("ejemplo").innerHTML = mensaje;
+}
  $(document).ready(function(){
   $(".view_data").click(function(){
     var employee_id = $(this).attr("id");  
