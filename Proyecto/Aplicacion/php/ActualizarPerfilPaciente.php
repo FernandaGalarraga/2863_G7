@@ -90,9 +90,19 @@ while($row=$res->fetch_assoc()){
                                                         <div class="form-group col-md-6">
                                                             <label for="inputState">Género</label>
                                                             <select class="text-center form-control" name="GENEROPACIENTE">
-                                                                <option value="'.$row['GENEROPACIENTE'].'">'.$row['GENEROPACIENTE'].'</option>
-                                                                <option value="Masculino">'.!$row['GENEROPACIENTE'].'</option>
-                                                            </select><br>
+                                                            ';
+                                                            $genero=array("Femenino","Masculino");
+                                                
+                                                            foreach($genero as $c){
+                                                                if($c==$row['GENEROPACIENTE']){
+                                                                    $html.='<option value="'.$c.'" selected="selected">'.$c.'</option>';
+                                                                }else{
+                                                                $html.='<option value="'.$c.'">'.$c.'</option>';
+                                                                }
+                                                            }
+                                                
+                                                            $html.='
+                                                          </select>
                                                         </div>
                                                     </div>
                                                 <input type="submit" class="btnRegister" link  value="Actualizar"/>

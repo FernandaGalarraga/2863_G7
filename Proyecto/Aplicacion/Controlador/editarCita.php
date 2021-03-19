@@ -168,7 +168,7 @@ $(document).ready(function(){
       
         <div class="form-group col-md-6">
         <h5>Nueva Hora</h5> 
-          <select class="text-center form-control form-control-lg" name="cbx_horaMedico2" id="cbx_horaMedico2"></select>
+          <select class="text-center form-control form-control-lg" name="cbx_horaMedico2" id="cbx_horaMedico2" required></select>
         </div>
   </div><br>
     <center>

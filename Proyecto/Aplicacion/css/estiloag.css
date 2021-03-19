@@ -41,5 +41,5 @@ label{
     font-size: 14px;
 }
 select{
-    text-align: center;
+    text-align-last:center;
 }
