@@ -12,7 +12,8 @@ require_once "Conexion.php";
     }
     $cn=conectar();  
     $horasDisponibles=array();
-    $sql="SELECT * FROM `horarioatencion` WHERE CODIGOUSUARIO= '$id_medico'";
+    $sql="SELECT * FROM `horarioatencion` WHERE CODIGOUSUARIO= '$id_medico'
+    ";
     $resUser=$cn->query($sql);
     $horaActual=date('H:i:s');
 	$fechaActual=date('Y-m-d');
@@ -31,7 +32,9 @@ require_once "Conexion.php";
         array_push($horasDisponibles,$horaInicio);
     }
     $horasMed=array();
-    $sqlCitaMedica="SELECT * FROM `citamedica` WHERE MED_CODIGOUSUARIO='$id_medico' AND FECHACONSULTA='$fecha'";
+    $sqlCitaMedica="SELECT * FROM `citamedica` WHERE MED_CODIGOUSUARIO='$id_medico' AND FECHACONSULTA='$fecha'
+    AND DISPONIBILIDADCITAMEDICA='1'
+    ";
     $resUser=$cn->query($sqlCitaMedica);
     $horasNoDisponibles=array();
     if($resUser->num_rows<=0){
@@ -63,12 +66,24 @@ require_once "Conexion.php";
 			}		
 		}
 	}
+/*
+    $sqlCitaCancelada="SELECT * FROM `citamedica` WHERE MED_CODIGOUSUARIO='$id_medico' AND FECHACONSULTA='$fecha'
+    AND estado='Cancelado' AND estado!='Reservado'
+    ";
+    $resUser=$cn->query($sqlCitaCancelada);
+    while($reg=$resUser->fetch_array())
+	{
+     array_push($horasDisponibles,$reg['HORACONSULTA']);
+	}
+    sort($horasDisponibles);
+
 	foreach ($horasDisponibles as $valor) {		
         if($valor <= $horaActual && $fechaActual==$fecha){
             $borrar=array_search($valor,$horasDisponibles);
             unset($horasDisponibles[$borrar]);            
        }		
 	}
+    */
     $html= "<option value=''>Horas disponibles</option>";
 
     

@@ -20,6 +20,7 @@ $id=$_SESSION['codigo'];
          ON c.CODIGOUSUARIO=p.CODIGOUSUARIO
          WHERE p.CODIGOUSUARIO='$id'  
          AND c.fechaconsulta BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'  
+         AND c.estado!='Cancelado'
       order by c.fechaconsulta desc";  
       $res=$cn->query($sql) or die($con->error); 
       $output .= '  
@@ -46,16 +47,20 @@ $id=$_SESSION['codigo'];
                           <td class="text-center success">'. $row["horaconsulta"] .'</td>';
 
                     $diaHoraCita=$row["fechaconsulta"].' '.$row["horaconsulta"];
-                    if($diaHoraCita<=$diahoraActual){
+                    if($diaHoraCita<=$diahoraActual || $row["estado"]=="Cancelado"){
                          $output.='<td class="text-center success">      
-                         <td class="text-center success">'. $row["estado"] .'</         
-                         </td>';
+                         Estado Cita:   
+                         </td>
+                         <td class="text-center success"> 
+                         '. $row["estado"].'
+                         </td>'
+                         ;
                          }else{
                          $output.='<td class="text-center success">
                          <input type="button" name="view" value="Actualizar" id='.$row["codigocitamedica"].' class="btn btn-success view_data" />
                          </td>
                          <td class="text-center success">
-                              <a class="btn btn-danger" href="#">Cancelar cita</a>
+                         <button onclick="alerta(this)" class="btn btn-danger" id='.$row["codigocitamedica"].'>Cancelar Cita</button>
                          </td>';
                          }
                      $output.='</tr>  
@@ -87,6 +92,7 @@ $id=$_SESSION['codigo'];
            </div>  
       </div>  
  </div>
+ <script src="../js/accionesAgenda.js"></script>
  <script>
  
  $(document).ready(function(){

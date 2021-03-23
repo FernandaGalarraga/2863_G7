@@ -59,7 +59,13 @@ $html='
   <div class="form-row">
       <div class="form-group col-md-12">
         <h5>Estado cita</h5> 
-        <input type="text" name="ESTADO" placeholder="Ingresar estado..." class="form-control form-control-lg" id="fechaConsulta"/>
+        <select class="text-center form-control form-control-lg" name="ESTADO" required>
+        <option value="">--Seleccionar--</option>
+        <option>Puntual</option>
+        <option>Atraso</option>
+        <option>Inasistencia</option>
+        </select>
+       
       </div>
   </div><br>
   <center>

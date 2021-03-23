@@ -23,7 +23,7 @@ $id=$_SESSION['codigo'];
 date_default_timezone_set("America/Guayaquil");
 $date = date('Y-m-d');
 $hora = date('H:i:s');
-$sql="SELECT c.codigocitamedica, concat_ws(' ', m.NOMBREMEDICO, m.APELLIDOMEDICO) as 'Medico', c.tipoconsulta, c.fechaconsulta, c.horaconsulta 
+$sql="SELECT c.codigocitamedica, concat_ws(' ', m.NOMBREMEDICO, m.APELLIDOMEDICO) as 'Medico', c.tipoconsulta, c.fechaconsulta, c.horaconsulta,c.estado 
       FROM citamedica c 
       INNER JOIN medico m 
       ON c.MED_CODIGOUSUARIO=m.CODIGOUSUARIO
@@ -32,7 +32,9 @@ $sql="SELECT c.codigocitamedica, concat_ws(' ', m.NOMBREMEDICO, m.APELLIDOMEDICO
       WHERE p.CODIGOUSUARIO='$id'
       AND c.fechaconsulta='$date'
       AND c.horaconsulta>'$hora'
-	    order by c.fechaconsulta desc";
+      AND c.estado!='Cancelado'
+      
+	order by c.fechaconsulta desc";
 $res=$cn->query($sql) or die($con->error);
 ?>
 <div class="login">
@@ -71,13 +73,23 @@ $res=$cn->query($sql) or die($con->error);
              <td class="text-center success"><?php echo $row["fechaconsulta"]; ?></td>  
              <td class="text-center success"><?php echo $row["horaconsulta"]; ?></td>
              <?php
-			
-             $html='<td class="text-center success">
+          $html='';
+          if( $row["estado"]!='Cancelado'){
+             $html.='<td class="text-center success">
              <input type="button" name="view" value="Actualizar" id='.$row["codigocitamedica"].' class="btn btn-success view_data" />
               </td>
               <td class="text-center success">
-              <button onclick="alerta()">Cancelar Cita</button
+              <button onclick="alerta(this)" class="btn btn-danger" id='.$row["codigocitamedica"].'>Cancelar Cita</button>
               </td>';
+           }else{
+               $html.='<td class="text-center success">      
+               Estado Cita:   
+               </td>
+               <td class="text-center success"> 
+               '. $row["estado"].'
+               </td>'
+               ;
+           }
               echo $html; 			 
              ?>		 
            </tr>  
@@ -106,20 +118,10 @@ $res=$cn->query($sql) or die($con->error);
            </div>  
       </div>  
  </div>
+ <script src="../js/accionesAgenda.js"></script>
  
  <script>
- function alerta()
-    {
-    var mensaje;
-    var opcion = confirm("¿Estas Seguro que quieres cancelar la cita?");
-    if (opcion == true) {
-       
-	} else {
-	    
-	}
-	document.getElementById("ejemplo").innerHTML = mensaje;
-}
- $(document).ready(function(){
+$(document).ready(function(){
   $(".view_data").click(function(){
     var employee_id = $(this).attr("id");  
            if(employee_id != '')  
