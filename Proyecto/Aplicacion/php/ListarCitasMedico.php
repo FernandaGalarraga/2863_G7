@@ -22,7 +22,7 @@ $id=$_SESSION['codigo'];
 date_default_timezone_set("America/Guayaquil");
 $date = date('Y-m-d');
 $hora = date('H:i:s');
-$sql="SELECT c.codigocitamedica, concat_ws(' ', p.NOMBREPACIENTE, p.APELLIDOPATERNO) as 'Paciente', c.tipoconsulta, c.fechaconsulta, c.horaconsulta 
+$sql="SELECT c.codigocitamedica, concat_ws(' ', p.NOMBREPACIENTE, p.APELLIDOPATERNO) as 'Paciente', c.tipoconsulta, c.fechaconsulta, c.horaconsulta,c.estado 
       FROM citamedica c 
       INNER JOIN paciente p 
       ON c.CODIGOUSUARIO=p.CODIGOUSUARIO
@@ -71,10 +71,19 @@ $res=$cn->query($sql) or die($con->error);
              <td class="text-center success"><?php echo $row["horaconsulta"]; ?></td>
              <?php
 			
-             $html='<td class="text-center success">
+          $html='';
+          if($row["estado"]=="Cancelado"){
+             
+               $html='<td class="text-center success">
+             <h5 style="color: red; font-weight:bold;">Cancelada</h5>
+              </td>';
+          }else{
+               $html='<td class="text-center success">
              <input type="button" name="view" value="Estado" id='.$row["codigocitamedica"].' class="btn btn-info view_data" />
               </td>';
-              echo $html; 			 
+
+          }              
+          echo $html; 			 
              ?>		 
            </tr>  
            <?php  

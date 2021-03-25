@@ -83,10 +83,10 @@ $res=$cn->query($sql) or die($con->error);
               </td>';
            }else{
                $html.='<td class="text-center success">      
-               Estado Cita:   
+               <h5 style="font-weight:bold;">Estado Cita:<h5>   
                </td>
                <td class="text-center success"> 
-               '. $row["estado"].'
+               <h5 style="color: blue; font-weight:bold;">'. $row["estado"].'<h5>
                </td>'
                ;
            }

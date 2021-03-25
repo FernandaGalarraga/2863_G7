@@ -66,16 +66,6 @@ require_once "Conexion.php";
 			}		
 		}
 	}
-/*
-    $sqlCitaCancelada="SELECT * FROM `citamedica` WHERE MED_CODIGOUSUARIO='$id_medico' AND FECHACONSULTA='$fecha'
-    AND estado='Cancelado' AND estado!='Reservado'
-    ";
-    $resUser=$cn->query($sqlCitaCancelada);
-    while($reg=$resUser->fetch_array())
-	{
-     array_push($horasDisponibles,$reg['HORACONSULTA']);
-	}
-    sort($horasDisponibles);
 
 	foreach ($horasDisponibles as $valor) {		
         if($valor <= $horaActual && $fechaActual==$fecha){
@@ -83,7 +73,7 @@ require_once "Conexion.php";
             unset($horasDisponibles[$borrar]);            
        }		
 	}
-    */
+    
     $html= "<option value=''>Horas disponibles</option>";
 
     

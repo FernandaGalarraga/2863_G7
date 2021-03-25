@@ -49,10 +49,10 @@ $id=$_SESSION['codigo'];
                     $diaHoraCita=$row["fechaconsulta"].' '.$row["horaconsulta"];
                     if($diaHoraCita<=$diahoraActual || $row["estado"]=="Cancelado"){
                          $output.='<td class="text-center success">      
-                         Estado Cita:   
+                         <h5 style="font-weight:bold;">Estado Cita:<h5>    
                          </td>
                          <td class="text-center success"> 
-                         '. $row["estado"].'
+                         <h5 style="color: blue;">'. $row["estado"].'<h5>
                          </td>'
                          ;
                          }else{

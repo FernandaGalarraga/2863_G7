@@ -1,5 +1,6 @@
 <head>
 <link rel='stylesheet' href='../css/estilop.css'>
+
 </head>
 <?php  
 require_once "../modelo/Conexion.php"; 
@@ -12,7 +13,7 @@ $id=$_SESSION['codigo'];
       $cn=conectar(); 
       $output = '';  
       $sql = "  
-        SELECT c.codigocitamedica, concat_ws(' ', p.NOMBREPACIENTE, p.APELLIDOPATERNO) as 'Paciente', c.tipoconsulta, c.fechaconsulta, c.horaconsulta 
+        SELECT c.codigocitamedica, concat_ws(' ', p.NOMBREPACIENTE, p.APELLIDOPATERNO) as 'Paciente', c.tipoconsulta, c.fechaconsulta, c.horaconsulta,c.estado 
         FROM citamedica c 
         INNER JOIN paciente p 
         ON c.CODIGOUSUARIO=p.CODIGOUSUARIO
@@ -45,16 +46,18 @@ $id=$_SESSION['codigo'];
                           <td class="text-center success">'. $row["fechaconsulta"] .'</td>  
                           <td class="text-center success">'. $row["horaconsulta"] .'</td>';
 
-                    $diaHoraCita=$row["fechaconsulta"].' '.$row["horaconsulta"];
-                    if($diaHoraCita<=$diahoraActual){
-                         $output.='<td class="text-center success">  
-                         <button class="btn btn-success" disabled>Estado</button>                           
-                         </td>';
-                         }else{
-                         $output.='<td class="text-center success">
-                              <a class="btn btn-success" href="#">Estado</a>
-                         </td>';
-                         }
+  
+                          if($row["estado"]=="Cancelado"){
+                             
+                              $output.='<td class="text-center success">
+                             <h5 style="color: red; font-weight:bold;">Cancelada</h5>
+                              </td>';
+                          }else{
+                              $output.='<td class="text-center success">
+                             <input type="button" name="view" value="Estado" id='.$row["codigocitamedica"].' class="btn btn-info view_data" />
+                              </td>';
+                
+                          } 
                      $output.='</tr>  
                 ';  
            }  
@@ -65,7 +68,47 @@ $id=$_SESSION['codigo'];
            <p id="texto1" class="text-center" colspan="5">No hay citas médicas agendadas en esta fecha</p>  
            ';  
       }  
-      $output .= '</table>';  
+      $output .= '</table>
+      <div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                </div> 
+                <div class="modal-header">   
+                     <h4 class="modal-title">Estado Cita Medica</h4>  
+                </div>  
+                <div class="modal-body" id="editarCitaMedica">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-succe" data-dismiss="modal">Cancelar</button>  
+                </div>  
+           </div>  
+      </div>  
+     </div>
+     <script>
+ 
+ $(document).ready(function(){
+  $(".view_data").click(function(){
+    var employee_id = $(this).attr("id");  
+           if(employee_id != "")  
+           {  
+                $.ajax({  
+                     url:"../php/estadoCitaMedica.php",  
+                     method:"POST",  
+                     data:{cita_id:employee_id},  
+                     success:function(data){  
+                          $("#editarCitaMedica").html(data);  
+                          $("#dataModal").modal("show");  
+                     }  
+                });  
+           } 
+  });
+});
+
+ </script>
+      
+      ';  
       echo $output;  
  }  
  ?>
